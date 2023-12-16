@@ -27,13 +27,13 @@ public class Brick extends Sprite {
         int randomHealth = (int) (Math.random() * 8);
         health = randomHealth;
         if(health <= 2){
-            image = new ImageIcon("src/resources/images/brick.png").getImage();
+            image = new ImageIcon("src/resources/images/SadBrick1.png").getImage();
         }
         else if (health > 2 && health <= 4){
-            image = new ImageIcon("src/resources/images/brick17.png").getImage();
+            image = new ImageIcon("src/resources/images/AngryBrick.png").getImage();
         }
         else {
-            image = new ImageIcon("src/resources/images/brick5.png").getImage();
+            image = new ImageIcon("src/resources/images/HappyBrick.png").getImage();
         }
 
     }
@@ -55,13 +55,13 @@ public class Brick extends Sprite {
     void setHealth(int damage){
         health -= damage;
         if(health <= 2){
-            image = new ImageIcon("src/resources/images/brick.png").getImage();
+            image = new ImageIcon("src/resources/images/SadBrick1.png").getImage();
         }
         else if (health > 2 && health <= 4){
-            image = new ImageIcon("src/resources/images/brick17.png").getImage();
+            image = new ImageIcon("src/resources/images/AngryBrick.png").getImage();
         }
         else {
-            image = new ImageIcon("src/resources/images/brick5.png").getImage();
+            image = new ImageIcon("src/resources/images/HappyBrick.png").getImage();
         }
     }
 }
