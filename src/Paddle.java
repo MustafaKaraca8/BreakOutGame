@@ -40,21 +40,23 @@ public class Paddle extends Sprite {
         }
     }
 
+    // Basıldığında
     void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-
+            image = new ImageIcon("src/resources/images/paddleSol.png").getImage();
             dx = -1;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-
+            image = new ImageIcon("src/resources/images/paddleSag.png").getImage();
             dx = 1;
         }
     }
 
+    // Basılan tuş bırakıldığında
     void keyReleased(KeyEvent e) {
 
         int key = e.getKeyCode();
@@ -66,6 +68,7 @@ public class Paddle extends Sprite {
         if (key == KeyEvent.VK_RIGHT) {
             dx = 0;
         }
+        image = new ImageIcon("src/resources/images/paddle.png").getImage();
     }
 
     private void resetState() {

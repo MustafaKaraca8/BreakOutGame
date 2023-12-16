@@ -58,7 +58,7 @@ public class GameScreen extends JPanel {
 
             for (int j = 0; j < 6; j++) {
 
-                bricks[k] = new Brick(j * 68 + 10, i * 25 + 10);
+                bricks[k] = new Brick(j * 68 + 190, i * 25 + 50);
                 k++;
             }
         }
