@@ -2,7 +2,7 @@
 
 public interface Commons {
 
-    int WIDTH = 700;
+    int WIDTH = 800;
     int HEIGHT = 600;
     int BOTTOM_EDGE = 590;
     int N_OF_BRICKS = 30;

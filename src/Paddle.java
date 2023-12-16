@@ -2,10 +2,10 @@
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class Paddle extends Sprite  {
+public class Paddle extends Sprite {
 
     private int dx;
-    private int speed = 2;
+    private int speed = 3;
 
     public Paddle() {
 
@@ -21,7 +21,6 @@ public class Paddle extends Sprite  {
     }
 
     private void loadImage() {
-
         var ii = new ImageIcon("src/resources/images/paddle.png");
         image = ii.getImage();
     }
@@ -61,12 +60,10 @@ public class Paddle extends Sprite  {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-
             dx = 0;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-
             dx = 0;
         }
     }
@@ -75,5 +72,9 @@ public class Paddle extends Sprite  {
 
         x = Commons.INIT_PADDLE_X;
         y = Commons.INIT_PADDLE_Y;
+    }
+
+    int getDx() {
+        return dx;
     }
 }

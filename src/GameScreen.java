@@ -7,15 +7,15 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
-public class Board extends JPanel {
+public class GameScreen extends JPanel {
 
 
     private Timer timer;
@@ -24,9 +24,9 @@ public class Board extends JPanel {
     private Paddle paddle;
     private Brick[] bricks;
     private boolean inGame = true;
+    private int time = 0;
 
-
-    public Board() {
+    public GameScreen() {
 
         startGame();
     }
@@ -138,7 +138,10 @@ public class Board extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            time++;
+            if(time >= 5){
+                // Do Brick Change
+            }
             doGameCycle();
         }
     }
@@ -167,97 +170,47 @@ public class Board extends JPanel {
         for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
 
             if (bricks[i].isDestroyed()) {
-
                 j++;
             }
 
             if (j == Commons.N_OF_BRICKS) {
-
                 message = "Victory";
                 stopGame();
             }
         }
 
         if ((ball.getRect()).intersects(paddle.getRect())) {
-
-            int paddleLPos = (int) paddle.getRect().getMinX();
-            int ballLPos = (int) ball.getRect().getMinX();
-
-            int first = paddleLPos + 8;
-            int second = paddleLPos + 16;
-            int third = paddleLPos + 24;
-            int fourth = paddleLPos + 32;
-
-            if (ballLPos < first) {
-
-                ball.setXDir(-1);
-                ball.setYDir(-1);
-            }
-
-            if (ballLPos >= first && ballLPos < second) {
-
-                ball.setXDir(-1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
-
-            if (ballLPos >= second && ballLPos < third) {
-
-                ball.setXDir(0);
-                ball.setYDir(-1);
-            }
-
-            if (ballLPos >= third && ballLPos < fourth) {
-
-                ball.setXDir(1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
-
-            if (ballLPos > fourth) {
-
-                ball.setXDir(1);
-                ball.setYDir(-1);
-            }
+            //Tokaçın x yönünde gideceği yeri haraket yönüne göre belirledik
+            ball.setXDir(paddle.getDx());
+            ball.setYDir(-1);
         }
 
         for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
 
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
-                int ballLeft = (int) ball.getRect().getMinX();
-                int ballHeight = (int) ball.getRect().getHeight();
-                int ballWidth = (int) ball.getRect().getWidth();
-                int ballTop = (int) ball.getRect().getMinY();
-
-                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
-                var pointLeft = new Point(ballLeft - 1, ballTop);
-                var pointTop = new Point(ballLeft, ballTop - 1);
-                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
-
                 if (!bricks[i].isDestroyed()) {
-                    // çarptığında hızarttır
 
                     bricks[i].setHealth(ball.getDamage());
-                    if (bricks[i].getRect().contains(pointRight)) {
-                        ball.setXDir(-1);
-                    } else if (bricks[i].getRect().contains(pointLeft)) {
+                    Random random = new Random();
+                    // -1, 0 veya 1 değerlerini rastgele seçme
+                    int randomValue = random.nextInt(3) - 1;
+                    // Topun tuğlalara çarptıktan sonra rastgele yönlerde gitmesini belirledik
+                    ball.setXDir(randomValue);
+                    ball.setYDir(1);
 
-                        ball.setXDir(1);
-                    }
-
-                    if (bricks[i].getRect().contains(pointTop)) {
-
-                        ball.setYDir(1);
-                    } else if (bricks[i].getRect().contains(pointBottom)) {
-
-                        ball.setYDir(-1);
-                    }
-
+                    // Topun değdiği tuğlayı seçip canını kontrol ediyor
                     if(bricks[i].getHealth() <= 0){
                         bricks[i].setDestroyed(true);
                     }
-
                 }
             }
         }
     }
+
+   /*private void ultimateMode(){
+        for (int i = 0; i < ; i++) {
+
+        }
+    }*/
 }

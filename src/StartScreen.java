@@ -7,18 +7,20 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class EntryScreen extends JPanel {
-    public EntryScreen() {
+public class StartScreen extends JPanel {
+    public StartScreen() {
         setLayout(new GridBagLayout());
 
+        // Konum belirlemek için
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(100, 0, 0, 0); // 100 x üst boşluk
+        gbc.insets = new Insets(-400, 0, 0, 0); // 100 x üst boşluk
 
         // Press Start 2P fontunu yükle
         Font pixelFont = loadPixelFont();
 
+        // Text oluşturmak için
         JLabel welcomeLabel = new JLabel("Welcome to Breakout");
         welcomeLabel.setFont(pixelFont);
 
@@ -31,7 +33,7 @@ public class EntryScreen extends JPanel {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var parent = (Breakout) SwingUtilities.getWindowAncestor(EntryScreen.this);
+                var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
                 parent.gameScreen.requestFocusInWindow();
@@ -41,6 +43,7 @@ public class EntryScreen extends JPanel {
         add(startButton, gbc);
     }
 
+    // Yolunu girdğimiz fonta ulaşılmaz ise Font olarak Arial kullan
     private Font loadPixelFont() {
         try {
             InputStream is = getClass().getResourceAsStream("/resources/fonts/PressStart2P.ttf");
