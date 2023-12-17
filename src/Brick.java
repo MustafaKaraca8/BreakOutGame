@@ -49,8 +49,8 @@ public class Brick extends Sprite {
     void setHealth(int damage) {
         health -= damage;
         // 2 veya 4'e eşit veya küçükse bu metot çağırıldığında loadImage çalıştır
-        if (health <= 2 || health <= 4) {
+        if (health <= 2) {
             loadImage();
-        }
+        }else if(health > 2 && health <= 4) loadImage();
     }
 }

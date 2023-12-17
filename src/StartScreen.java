@@ -15,21 +15,21 @@ public class StartScreen extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(-350, 0, 0, 50); // 100 x üst boşluk
+        gbc.insets = new Insets(0, 5, 100, 0); // 100 x üst boşluk
 
         // Oyun İsmi İçin Konum Ayarlaması
-        ImageIcon imageIcon = new ImageIcon("src/resources/images/BreakOut.png");
+        ImageIcon imageIcon = new ImageIcon("src/resources/images/gameName.png");
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
 
         // Başlat Butonu için konum ayarlaması
         gbc.gridy = 1;
-        gbc.insets = new Insets(-250, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         JLabel startButtonLabel = getStartButton();
         add(startButtonLabel, gbc);
 
         gbc.gridy = 2;
-        gbc.insets = new Insets(-55, 0, 0, 0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
@@ -113,7 +113,7 @@ public class StartScreen extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/background.png");
+        ImageIcon background = new ImageIcon("src/resources/images/background2.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
