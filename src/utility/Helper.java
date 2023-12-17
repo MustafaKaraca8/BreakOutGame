@@ -4,14 +4,19 @@ import java.util.Random;
 
 public class Helper {
 
-    public static int generateRandomNumber() {
-        // Random sınıfını kullanarak rastgele bir sayı üretme
-        Random random = new Random();
+    // Random sınıfını kullanarak rastgele bir sayı üretme
+    static Random random = new Random();
+
+    public static int generateRandomDir() {
+
         // -1 veya 1 arasında rastgele bir sayı üretme
-        int randomNumber = random.nextInt(2) * 2 - 1;
-        return randomNumber;
+        return random.nextInt(2) * 2 - 1;
     }
 
-    // Diğer yardımcı fonksiyonları da buraya ekleyebilirsiniz.
+    public static int selectRandomBrickImage(){
+
+        // 0 veya 1 üretir
+        return random.nextInt(2);
+    }
 
 }

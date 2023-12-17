@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class StartScreen extends JPanel {
+
     public StartScreen() {
-        //Ekranda ki Imageların yerini değiştirmek için
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
-        setBackground(Color.BLUE);
 
         // Konum belirlemek için
         GridBagConstraints gbc = new GridBagConstraints();
@@ -29,14 +28,15 @@ public class StartScreen extends JPanel {
         JLabel startButtonLabel = getStartButton();
         add(startButtonLabel, gbc);
 
-        gbc.gridy = 2 ;
-        gbc.insets = new Insets(-55 , 0 , 0 , 0);
+        gbc.gridy = 2;
+        gbc.insets = new Insets(-55, 0, 0, 0);
         JLabel exitButtonLabel = getExitButton();
-        add(exitButtonLabel , gbc);
+        add(exitButtonLabel, gbc);
+
 
     }
 
-    // Başlatma butonun fare dinleyicileri ver resim yükelemeleri
+    // Başlatma butonun fare dinleyicileri ve resim yükleme
     private JLabel getStartButton() {
         ImageIcon startButtonImage = new ImageIcon("src/resources/images/buttons/startButton.png");
         ImageIcon onStartButtonImage = new ImageIcon("src/resources/images/buttons/onStartButton.png");
@@ -44,12 +44,12 @@ public class StartScreen extends JPanel {
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                startButtonLabel.setIcon(onStartButtonImage); // Fare içeri girdiğinde hover görüntüsünü ayarla
+                startButtonLabel.setIcon(onStartButtonImage);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                startButtonLabel.setIcon(startButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+                startButtonLabel.setIcon(startButtonImage);
             }
 
             @Override
@@ -62,26 +62,26 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                startButtonLabel.setIcon(startButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+                startButtonLabel.setIcon(startButtonImage);
             }
         });
         return startButtonLabel;
     }
 
-    // Çıkış butonun fare dinleyicileri ver resim yükelemeleri
-    private JLabel getExitButton(){
+    // Çıkış butonun fare dinleyicileri ve resim yükleme
+    private JLabel getExitButton() {
         ImageIcon exitButtonImage = new ImageIcon("src/resources/images/buttons/exitButton.png");
         ImageIcon onExitButtonImage = new ImageIcon("src/resources/images/buttons/onExitButton.png");
         JLabel exitButtonLabel = new JLabel(exitButtonImage);
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                exitButtonLabel.setIcon(onExitButtonImage); // Fare içeri girdiğinde hover görüntüsünü ayarla
+                exitButtonLabel.setIcon(onExitButtonImage);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                exitButtonLabel.setIcon(exitButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+                exitButtonLabel.setIcon(exitButtonImage);
             }
 
             @Override
@@ -91,13 +91,13 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                exitButtonLabel.setIcon(exitButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+                exitButtonLabel.setIcon(exitButtonImage);
             }
         });
         return exitButtonLabel;
     }
 
-    // Yolunu girdiğimiz fonta ulaşılmaz ise Font olarak Arial kullan
+    // Yolunu girdiğimiz fonta ulaşılamaz ise Font olarak Arial kullan
     private Font loadPixelFont() {
         try {
             InputStream is = getClass().getResourceAsStream("/resources/fonts/PressStart2P.ttf");
@@ -107,5 +107,14 @@ public class StartScreen extends JPanel {
             // Hata durumunda varsayılan fontu kullanabilirsiniz
             return new Font("Arial", Font.PLAIN, 24);
         }
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Arka plan resmini çiz
+        ImageIcon background = new ImageIcon("src/resources/images/background.png");
+        Image backgroundImage = background.getImage();
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
 }

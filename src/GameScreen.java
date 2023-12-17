@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Random;
 
-import static utility.Helper.generateRandomNumber;
+import static utility.Helper.generateRandomDir;
 
 public class GameScreen extends JPanel {
 
@@ -32,7 +31,7 @@ public class GameScreen extends JPanel {
     }
 
     public void initBoard() {
-        setBackground(Color.MAGENTA);
+        setBackground(Color.ORANGE);
         addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
@@ -51,9 +50,9 @@ public class GameScreen extends JPanel {
 
         for (int i = 0; i < 5; i++) {
 
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 4; j++) {
 
-                bricks[k] = new Brick(j * 170 + 190, i * 25 + 50);
+                bricks[k] = new Brick(j * 80 + 270, i * 21 + 50);
                 k++;
             }
         }
@@ -188,7 +187,7 @@ public class GameScreen extends JPanel {
 
                 if(ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1 ) ball.setXDir(1);
-                else ball.setXDir(generateRandomNumber());
+                else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
 
@@ -196,7 +195,7 @@ public class GameScreen extends JPanel {
 
                 if(ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1 ) ball.setXDir(1);
-                else ball.setXDir(generateRandomNumber());
+                else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
             }
 
@@ -204,7 +203,7 @@ public class GameScreen extends JPanel {
 
                 if(ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1 ) ball.setXDir(1);
-                else ball.setXDir(generateRandomNumber());
+                else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
 
@@ -212,7 +211,7 @@ public class GameScreen extends JPanel {
 
                 if(ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1 ) ball.setXDir(1);
-                else ball.setXDir(generateRandomNumber());
+                else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
             }
 
@@ -220,7 +219,7 @@ public class GameScreen extends JPanel {
 
                 if(ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1 ) ball.setXDir(1);
-                else ball.setXDir(generateRandomNumber());
+                else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
         }
@@ -245,20 +244,20 @@ public class GameScreen extends JPanel {
                     // Top tuğlanın sağına hangi yönden geldiyse -1 ise -1 +1 ise +1 yönüne doğru haraket eder else if'de ise soluna
                     if (bricks[i].getRect().contains(pointRight)) {
                         if (ball.getXdir() == -1) {
-                            ball.setXDir(-1);
-                        } else if (ball.getXdir() == 1) {
                             ball.setXDir(1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(-1);
                         } else {
-                            ball.setXDir(generateRandomNumber());
+                            ball.setXDir(generateRandomDir());
                         }
 
                     } else if (bricks[i].getRect().contains(pointLeft)) {
                         if (ball.getXdir() == -1) {
-                            ball.setXDir(-1);
-                        } else if (ball.getXdir() == 1) {
                             ball.setXDir(1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(-1);
                         } else {
-                            ball.setXDir(generateRandomNumber());
+                            ball.setXDir(generateRandomDir());
                         }
                     }
 
@@ -269,7 +268,7 @@ public class GameScreen extends JPanel {
                         } else if (ball.getXdir() == 1) {
                             ball.setXDir(1);
                         } else {
-                            ball.setXDir(generateRandomNumber());
+                            ball.setXDir(generateRandomDir());
                         }
                         ball.setYDir(1);
                     } else if (bricks[i].getRect().contains(pointBottom)) {
@@ -278,7 +277,7 @@ public class GameScreen extends JPanel {
                         } else if (ball.getXdir() == 1) {
                             ball.setXDir(1);
                         } else {
-                            ball.setXDir(generateRandomNumber());
+                            ball.setXDir(generateRandomDir());
                         }
                         ball.setYDir(-1);
                     }

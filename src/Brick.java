@@ -1,67 +1,56 @@
+import javax.swing.*;
 
-import javax.swing.ImageIcon;
-import java.awt.*;
+import static utility.Helper.selectRandomBrickImage;
 
 public class Brick extends Sprite {
 
+
+
     private boolean destroyed;
-    private int health = 4;
+    private int health;
+    private ImageIcon[] brickImages;
 
     public Brick(int x, int y) {
-
         initBrick(x, y);
     }
 
     private void initBrick(int x, int y) {
-
         this.x = x;
         this.y = y;
-
         destroyed = false;
-
+        health = (int) (Math.random() * Commons.MAX_HEALTH);
         loadImage();
         getImageDimensions();
     }
 
     private void loadImage() {
-        int randomHealth = (int) (Math.random() * 8);
-        health = randomHealth;
-        if(health <= 2){
-            image = new ImageIcon("src/resources/images/bricks/brokenBrick.png").getImage();
+        if (health <= 2) {
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/lowHealthBrick.png"), new ImageIcon("src/resources/images/bricks/lowHealthBrick2.png")};
+        } else if (health <= 4) {
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brokenBrick.png"), new ImageIcon("src/resources/images/bricks/lowHealthBrick.png")};
+        } else {
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brick.png"), new ImageIcon("src/resources/images/bricks/brick.png")};
         }
-        else if (health > 2 && health <= 4){
-            image = new ImageIcon("src/resources/images/bricks/brokenBrick.png").getImage();
-        }
-        else {
-            image = new ImageIcon("src/resources/images/bricks/brick.png").getImage();
-        }
-
+        image = brickImages[selectRandomBrickImage()].getImage();
     }
 
     boolean isDestroyed() {
-
         return destroyed;
     }
 
     void setDestroyed(boolean val) {
-
         destroyed = val;
     }
 
-    int getHealth(){
+    int getHealth() {
         return health;
     }
 
-    void setHealth(int damage){
+    void setHealth(int damage) {
         health -= damage;
-        if(health <= 2){
-            image = new ImageIcon("src/resources/images/bricks/brokenBrick.png").getImage();
-        }
-        else if (health > 2 && health <= 4){
-            image = new ImageIcon("src/resources/images/bricks/brokenBrick.png").getImage();
-        }
-        else {
-            image = new ImageIcon("src/resources/images/bricks/brick.png").getImage();
+        // 2 veya 4'e eşit veya küçükse bu metot çağırıldığında loadImage çalıştır
+        if (health <= 2 || health <= 4) {
+            loadImage();
         }
     }
 }

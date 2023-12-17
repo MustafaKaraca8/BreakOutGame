@@ -66,7 +66,7 @@ public class Ball extends Sprite {
         return xdir;
     }
     void setDamage(int dmg){
-        damage = dmg;
+        this.damage = dmg;
     }
 
     int getDamage(){
