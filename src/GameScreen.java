@@ -1,14 +1,7 @@
 
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -56,9 +49,9 @@ public class GameScreen extends JPanel {
 
         for (int i = 0; i < 5; i++) {
 
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < 2; j++) {
 
-                bricks[k] = new Brick(j * 68 + 190, i * 25 + 50);
+                bricks[k] = new Brick(j * 170 + 190, i * 25 + 50);
                 k++;
             }
         }
@@ -180,27 +173,57 @@ public class GameScreen extends JPanel {
         }
 
         if ((ball.getRect()).intersects(paddle.getRect())) {
+
+
+            int paddleLPos = (int) paddle.getRect().getMinX();
+            int ballLPos = (int) ball.getRect().getMinX();
+
+            int second = paddleLPos + 16;
+            int third = paddleLPos + 24;
+
+
             //Tokaçın x yönünde gideceği yeri haraket yönüne göre belirledik
-            ball.setXDir(paddle.getDx());
-            ball.setYDir(-1);
+
+            if(paddle.getDx() != 0){
+                ball.setXDir(paddle.getDx());
+                ball.setYDir(-1);
+            } else if (ballLPos >= second && ballLPos < third) {
+                ball.setXDir(generateRandomNumber());
+                ball.setYDir(-1);
+            }
+
         }
 
         for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
 
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
+                int ballLeft = (int) ball.getRect().getMinX();
+                int ballHeight = (int) ball.getRect().getHeight();
+                int ballWidth = (int) ball.getRect().getWidth();
+                int ballTop = (int) ball.getRect().getMinY();
+
+                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
+                var pointLeft = new Point(ballLeft - 1, ballTop);
+                var pointTop = new Point(ballLeft, ballTop - 1);
+                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
+
                 if (!bricks[i].isDestroyed()) {
-
                     bricks[i].setHealth(ball.getDamage());
-                    Random random = new Random();
-                    // -1, 0 veya 1 değerlerini rastgele seçme
-                    int randomValue = random.nextInt(3) - 1;
-                    // Topun tuğlalara çarptıktan sonra rastgele yönlerde gitmesini belirledik
-                    ball.setXDir(randomValue);
-                    ball.setYDir(1);
+                    if (bricks[i].getRect().contains(pointRight)) {
+                        ball.setXDir(-1);
+                    } else if (bricks[i].getRect().contains(pointLeft)) {
+                        ball.setXDir(1);
+                    }
+                    if (bricks[i].getRect().contains(pointTop)) {
+                        ball.setXDir(generateRandomNumber());
+                        ball.setYDir(1);
+                    } else if (bricks[i].getRect().contains(pointBottom)) {
+                        ball.setXDir(generateRandomNumber());
+                        ball.setYDir(-1);
+                    }
 
-                    // Topun değdiği tuğlayı seçip canını kontrol ediyor
-                    if(bricks[i].getHealth() <= 0){
+                    if(bricks[i].getHealth() <=0){
                         bricks[i].setDestroyed(true);
                     }
                 }
@@ -208,6 +231,13 @@ public class GameScreen extends JPanel {
         }
     }
 
+    public static int generateRandomNumber() {
+        // Random sınıfını kullanarak rastgele bir sayı üretme
+        Random random = new Random();
+        // -1 veya 1 arasında rastgele bir sayı üretme
+        int randomNumber = random.nextInt(2) * 2 - 1;
+        return randomNumber;
+    }
    /*private void ultimateMode(){
         for (int i = 0; i < ; i++) {
 
