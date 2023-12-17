@@ -10,7 +10,7 @@ public class StartScreen extends JPanel {
         //Ekranda ki Imageların yerini değiştirmek için
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
-        setBackground(Color.BLACK);
+        setBackground(Color.BLUE);
 
         // Konum belirlemek için
         GridBagConstraints gbc = new GridBagConstraints();
@@ -18,23 +18,28 @@ public class StartScreen extends JPanel {
         gbc.gridy = 0;
         gbc.insets = new Insets(-350, 0, 0, 50); // 100 x üst boşluk
 
-        // Load and set the image
+        // Oyun İsmi İçin Konum Ayarlaması
         ImageIcon imageIcon = new ImageIcon("src/resources/images/BreakOut.png");
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
 
-        // Adjust the grid bag constraints for the button
+        // Başlat Butonu için konum ayarlaması
         gbc.gridy = 1;
-        gbc.insets = new Insets(-250, 0, 0, 0); // 20 dp üst boşluk
-
+        gbc.insets = new Insets(-250, 0, 0, 0);
         JLabel startButtonLabel = getStartButton();
         add(startButtonLabel, gbc);
 
+        gbc.gridy = 2 ;
+        gbc.insets = new Insets(-55 , 0 , 0 , 0);
+        JLabel exitButtonLabel = getExitButton();
+        add(exitButtonLabel , gbc);
+
     }
 
+    // Başlatma butonun fare dinleyicileri ver resim yükelemeleri
     private JLabel getStartButton() {
-        ImageIcon startButtonImage = new ImageIcon("src/resources/images/startButton.png");
-        ImageIcon onStartButtonImage = new ImageIcon("src/resources/images/onButton.png");
+        ImageIcon startButtonImage = new ImageIcon("src/resources/images/buttons/startButton.png");
+        ImageIcon onStartButtonImage = new ImageIcon("src/resources/images/buttons/onStartButton.png");
         JLabel startButtonLabel = new JLabel(startButtonImage);
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -63,6 +68,34 @@ public class StartScreen extends JPanel {
         return startButtonLabel;
     }
 
+    // Çıkış butonun fare dinleyicileri ver resim yükelemeleri
+    private JLabel getExitButton(){
+        ImageIcon exitButtonImage = new ImageIcon("src/resources/images/buttons/exitButton.png");
+        ImageIcon onExitButtonImage = new ImageIcon("src/resources/images/buttons/onExitButton.png");
+        JLabel exitButtonLabel = new JLabel(exitButtonImage);
+        exitButtonLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                exitButtonLabel.setIcon(onExitButtonImage); // Fare içeri girdiğinde hover görüntüsünü ayarla
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                exitButtonLabel.setIcon(exitButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.exit(0);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                exitButtonLabel.setIcon(exitButtonImage); // Fare çıkış yaptığında normal görüntüyü ayarla
+            }
+        });
+        return exitButtonLabel;
+    }
 
     // Yolunu girdiğimiz fonta ulaşılmaz ise Font olarak Arial kullan
     private Font loadPixelFont() {
