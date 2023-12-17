@@ -8,6 +8,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import static utility.Helper.generateRandomNumber;
+
 public class GameScreen extends JPanel {
 
 
@@ -30,7 +32,7 @@ public class GameScreen extends JPanel {
     }
 
     public void initBoard() {
-
+        setBackground(Color.MAGENTA);
         addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
@@ -132,7 +134,7 @@ public class GameScreen extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             time++;
-            if(time >= 5){
+            if (time >= 5) {
                 // Do Brick Change
             }
             doGameCycle();
@@ -174,24 +176,53 @@ public class GameScreen extends JPanel {
 
         if ((ball.getRect()).intersects(paddle.getRect())) {
 
-
             int paddleLPos = (int) paddle.getRect().getMinX();
             int ballLPos = (int) ball.getRect().getMinX();
 
+            int first = paddleLPos + 8;
             int second = paddleLPos + 16;
             int third = paddleLPos + 24;
+            int fourth = paddleLPos + 32;
 
+            if (ballLPos < first) {
 
-            //Tokaçın x yönünde gideceği yeri haraket yönüne göre belirledik
-
-            if(paddle.getDx() != 0){
-                ball.setXDir(paddle.getDx());
-                ball.setYDir(-1);
-            } else if (ballLPos >= second && ballLPos < third) {
-                ball.setXDir(generateRandomNumber());
+                if(ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                else ball.setXDir(generateRandomNumber());
                 ball.setYDir(-1);
             }
 
+            if (ballLPos >= first && ballLPos < second) {
+
+                if(ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                else ball.setXDir(generateRandomNumber());
+                ball.setYDir(-1 * ball.getYDir());
+            }
+
+            if (ballLPos >= second && ballLPos < third) {
+
+                if(ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                else ball.setXDir(generateRandomNumber());
+                ball.setYDir(-1);
+            }
+
+            if (ballLPos >= third && ballLPos < fourth) {
+
+                if(ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                else ball.setXDir(generateRandomNumber());
+                ball.setYDir(-1 * ball.getYDir());
+            }
+
+            if (ballLPos > fourth) {
+
+                if(ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                else ball.setXDir(generateRandomNumber());
+                ball.setYDir(-1);
+            }
         }
 
         for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
@@ -210,20 +241,49 @@ public class GameScreen extends JPanel {
 
                 if (!bricks[i].isDestroyed()) {
                     bricks[i].setHealth(ball.getDamage());
+
+                    // Top tuğlanın sağına hangi yönden geldiyse -1 ise -1 +1 ise +1 yönüne doğru haraket eder else if'de ise soluna
                     if (bricks[i].getRect().contains(pointRight)) {
-                        ball.setXDir(-1);
+                        if (ball.getXdir() == -1) {
+                            ball.setXDir(-1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(1);
+                        } else {
+                            ball.setXDir(generateRandomNumber());
+                        }
+
                     } else if (bricks[i].getRect().contains(pointLeft)) {
-                        ball.setXDir(1);
+                        if (ball.getXdir() == -1) {
+                            ball.setXDir(-1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(1);
+                        } else {
+                            ball.setXDir(generateRandomNumber());
+                        }
                     }
+
+                    // Top tuğlanın üstüne hangi yönden geldiyse -1 ise -1 +1 ise +1 yönüne doğru haraket eder else if'de ise altına
                     if (bricks[i].getRect().contains(pointTop)) {
-                        ball.setXDir(generateRandomNumber());
+                        if (ball.getXdir() == -1) {
+                            ball.setXDir(-1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(1);
+                        } else {
+                            ball.setXDir(generateRandomNumber());
+                        }
                         ball.setYDir(1);
                     } else if (bricks[i].getRect().contains(pointBottom)) {
-                        ball.setXDir(generateRandomNumber());
+                        if (ball.getXdir() == -1) {
+                            ball.setXDir(-1);
+                        } else if (ball.getXdir() == 1) {
+                            ball.setXDir(1);
+                        } else {
+                            ball.setXDir(generateRandomNumber());
+                        }
                         ball.setYDir(-1);
                     }
 
-                    if(bricks[i].getHealth() <=0){
+                    if (bricks[i].getHealth() <= 0) {
                         bricks[i].setDestroyed(true);
                     }
                 }
@@ -231,13 +291,7 @@ public class GameScreen extends JPanel {
         }
     }
 
-    public static int generateRandomNumber() {
-        // Random sınıfını kullanarak rastgele bir sayı üretme
-        Random random = new Random();
-        // -1 veya 1 arasında rastgele bir sayı üretme
-        int randomNumber = random.nextInt(2) * 2 - 1;
-        return randomNumber;
-    }
+
    /*private void ultimateMode(){
         for (int i = 0; i < ; i++) {
 
