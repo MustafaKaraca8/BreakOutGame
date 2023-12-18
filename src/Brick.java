@@ -25,11 +25,11 @@ public class Brick extends Sprite {
 
     private void loadImage() {
         if (health <= 2) {
-            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/lowHealthBrick.png"), new ImageIcon("src/resources/images/bricks/lowHealthBrick2.png")};
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brokenRedBrick2.png"), new ImageIcon("src/resources/images/bricks/brokenBlackBrick2.png")};
         } else if (health <= 4) {
-            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brokenBrick.png"), new ImageIcon("src/resources/images/bricks/lowHealthBrick.png")};
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brokenRedBrick.png"), new ImageIcon("src/resources/images/bricks/brokenBlackBrick.png")};
         } else {
-            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/brick.png"), new ImageIcon("src/resources/images/bricks/brick.png")};
+            brickImages = new ImageIcon[]{new ImageIcon("src/resources/images/bricks/blackBrick.png"), new ImageIcon("src/resources/images/bricks/redBrick.png")};
         }
         image = brickImages[selectRandomBrickImage()].getImage();
     }

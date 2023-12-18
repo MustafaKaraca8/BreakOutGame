@@ -20,8 +20,10 @@ public class GameScreen extends JPanel {
     private boolean inGame = true;
     private int time = 0;
 
-    public GameScreen() {
 
+    // End screeni Game screen içerisinde çağıracağımızdan kaynaklı bir referansa ihitiyaç duyuyouruz
+    // bu yüzden refarans bir end screen alıyoruz.
+    public GameScreen() {
         startGame();
     }
 
@@ -58,6 +60,9 @@ public class GameScreen extends JPanel {
         }
 
         timer = new Timer(Commons.PERIOD, new GameCycle());
+    }
+
+    public void startTimer() {
         timer.start();
     }
 
@@ -149,9 +154,11 @@ public class GameScreen extends JPanel {
     }
 
     private void stopGame() {
-
+        var parent = (Breakout) SwingUtilities.getWindowAncestor(GameScreen.this);
         inGame = false;
         timer.stop();
+        parent.endScreen.openEndScreen(inGame);
+
     }
 
     private void checkCollision() {
@@ -185,40 +192,40 @@ public class GameScreen extends JPanel {
 
             if (ballLPos < first) {
 
-                if(ball.getXdir() == -1) ball.setXDir(-1);
-                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                if (ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
 
             if (ballLPos >= first && ballLPos < second) {
 
-                if(ball.getXdir() == -1) ball.setXDir(-1);
-                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                if (ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
             }
 
             if (ballLPos >= second && ballLPos < third) {
 
-                if(ball.getXdir() == -1) ball.setXDir(-1);
-                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                if (ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
 
             if (ballLPos >= third && ballLPos < fourth) {
 
-                if(ball.getXdir() == -1) ball.setXDir(-1);
-                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                if (ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
             }
 
             if (ballLPos > fourth) {
 
-                if(ball.getXdir() == -1) ball.setXDir(-1);
-                else if (ball.getXdir() == 1 ) ball.setXDir(1);
+                if (ball.getXdir() == -1) ball.setXDir(-1);
+                else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
@@ -227,10 +234,7 @@ public class GameScreen extends JPanel {
         }
 
         for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
-
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
-
-
                 int ballLeft = (int) ball.getRect().getMinX();
                 int ballTop = (int) ball.getRect().getMinY();
                 int ballRight = (int) ball.getRect().getMaxX();
@@ -239,9 +243,9 @@ public class GameScreen extends JPanel {
                 int ballHeight = (int) ball.getRect().getHeight();
 
                 var pointRight = new Point(ballRight + 1, ballTop + ballHeight / 2);
-                var pointLeft = new Point(ballLeft - 1, ballTop + ballHeight/ 2);
-                var pointTop = new Point(ballLeft +ballWidth / 2, ballTop - 1);
-                var pointBottom = new Point(ballLeft + ballWidth / 2, ballBottom + 1);
+                var pointLeft = new Point(ballLeft - 1, ballTop + ballHeight / 2);
+                var pointBottom = new Point(ballLeft + ballWidth / 2, ballTop - 1);
+                var pointTop = new Point(ballLeft + ballWidth / 2, ballBottom + 1);
 
                 if (!bricks[i].isDestroyed()) {
                     bricks[i].setHealth(ball.getDamage());
@@ -252,8 +256,6 @@ public class GameScreen extends JPanel {
                             ball.setXDir(1);
                         } else if (ball.getXdir() == 1) {
                             ball.setXDir(-1);
-                        } else {
-                            ball.setXDir(generateRandomDir());
                         }
 
                     } else if (bricks[i].getRect().contains(pointRight)) {
@@ -262,30 +264,25 @@ public class GameScreen extends JPanel {
                             ball.setXDir(1);
                         } else if (ball.getXdir() == 1) {
                             ball.setXDir(-1);
-                        } else {
-                            ball.setXDir(generateRandomDir());
                         }
                     }
 
-                    if (bricks[i].getRect().contains(pointBottom)) {
+                    if (bricks[i].getRect().contains(pointTop)) {
                         System.out.println("Üstüne çarptım");
                         if (ball.getYDir() == -1) {
                             ball.setYDir(1);
                         } else if (ball.getYDir() == 1) {
                             ball.setYDir(-1);
-                        } else {
-                            ball.setYDir(generateRandomDir());
                         }
-                    } else if (bricks[i].getRect().contains(pointTop)) {
+                    } else if (bricks[i].getRect().contains(pointBottom)) {
                         System.out.println("Altına çarptım");
                         if (ball.getYDir() == -1) {
                             ball.setYDir(1);
                         } else if (ball.getYDir() == 1) {
                             ball.setYDir(-1);
-                        } else {
-                            ball.setYDir(generateRandomDir());
                         }
                     }
+
 
                     if (bricks[i].getHealth() <= 0) {
                         bricks[i].setDestroyed(true);

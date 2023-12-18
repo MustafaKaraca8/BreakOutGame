@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 public class Paddle extends Sprite {
 
     private int dx;
-    private int speed = 3;
+    private int speed = 5;
 
     public Paddle() {
 
@@ -21,7 +21,7 @@ public class Paddle extends Sprite {
     }
 
     private void loadImage() {
-        var ii = new ImageIcon("src/resources/images/paddle.png");
+        var ii = new ImageIcon("src/resources/images/bricks/redBrick.png");
         image = ii.getImage();
     }
 
@@ -46,12 +46,12 @@ public class Paddle extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            image = new ImageIcon("src/resources/images/paddleSol.png").getImage();
+            image = new ImageIcon("src/resources/images/bricks/brokenRedBrick.png").getImage();
             dx = -1;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            image = new ImageIcon("src/resources/images/paddleSag.png").getImage();
+            image = new ImageIcon("src/resources/images/bricks/brokenRedBrick.png").getImage();
             dx = 1;
         }
     }
@@ -68,7 +68,7 @@ public class Paddle extends Sprite {
         if (key == KeyEvent.VK_RIGHT) {
             dx = 0;
         }
-        image = new ImageIcon("src/resources/images/paddle.png").getImage();
+        image = new ImageIcon("src/resources/images/bricks/redBrick.png").getImage();
     }
 
     private void resetState() {

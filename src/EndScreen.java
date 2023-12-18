@@ -2,14 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.io.InputStream;
 
-public class StartScreen extends JPanel {
+public class EndScreen  extends  JPanel{
 
-    public StartScreen() {
+
+    EndScreen(){
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
+
 
         // Konum belirlemek için
         GridBagConstraints gbc = new GridBagConstraints();
@@ -23,24 +23,20 @@ public class StartScreen extends JPanel {
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
 
-        // Başlat Butonu için konum ayarlaması
         gbc.gridy = 1;
         gbc.insets = new Insets(0, 0, 0, 0);
-        JLabel startButtonLabel = getStartButton();
-        add(startButtonLabel, gbc);
+        JLabel restartButtonLabel = getRestartButton();
+        add(restartButtonLabel,gbc);
 
         gbc.gridy = 2;
         gbc.insets = new Insets(0, 0, 0, 0);
         JLabel exitButtonLabel = getExitButton();
-        add(exitButtonLabel, gbc);
-
-
+        add(exitButtonLabel,gbc);
     }
 
-    // Başlatma butonun fare dinleyicileri ve resim yükleme
-    private JLabel getStartButton() {
+    private JLabel getRestartButton() {
         ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "startButton.png");
-        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "onStartButton.png");
+        ImageIcon onStartButtonImage = new ImageIcon("src/resources/images/buttons/onStartButton.png");
         JLabel startButtonLabel = new JLabel(startButtonImage);
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -55,8 +51,7 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked: Başlatma Butonu");
-                var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
+                var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
                 parent.gameScreen.startTimer();
@@ -101,24 +96,12 @@ public class StartScreen extends JPanel {
         return exitButtonLabel;
     }
 
-    // Yolunu girdiğimiz fonta ulaşılamaz ise Font olarak Arial kullan
-    private Font loadPixelFont() {
-        try {
-            InputStream is = getClass().getResourceAsStream("/resources/fonts/PressStart2P.ttf");
-            return Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-            // Hata durumunda varsayılan fontu kullanabilirsiniz
-            return new Font("Arial", Font.PLAIN, 24);
+    public void openEndScreen(boolean inGame){
+        // Bitiş ekranını aç
+        var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
+        if(!inGame){
+            parent.cardLayout.show(parent.cardPanel, "end_screen");
         }
-    }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/background.png");
-        Image backgroundImage = background.getImage();
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
 }

@@ -12,4 +12,6 @@ public interface Commons {
     int INIT_BALL_Y = 570;
     int PERIOD = 10;
     int MAX_HEALTH = 8;
+
+    String pathOfButton = "src/resources/images/buttons/";
 }

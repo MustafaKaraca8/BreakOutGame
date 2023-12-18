@@ -9,6 +9,7 @@ public class Breakout extends JFrame {
     private StartScreen startScreen;
     public GameScreen gameScreen;
 
+    public EndScreen endScreen;
 
     public Breakout() {
         initUI();
@@ -21,10 +22,11 @@ public class Breakout extends JFrame {
 
         startScreen = new StartScreen();
         gameScreen = new GameScreen();
-
+        endScreen = new EndScreen();
 
         cardPanel.add(startScreen, "start_screen");
         cardPanel.add(gameScreen, "game_screen");
+        cardPanel.add(endScreen, "end_screen");
 
         add(cardPanel);
 

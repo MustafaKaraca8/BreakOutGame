@@ -5,7 +5,7 @@ public class Ball extends Sprite {
     private int xdir;
     private int ydir;
     private int damage;
-    private int speed = 2;
+    private int speed = 4;
     public Ball() {
 
         initBall();
