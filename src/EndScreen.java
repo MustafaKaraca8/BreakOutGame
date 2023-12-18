@@ -35,8 +35,8 @@ public class EndScreen  extends  JPanel{
     }
 
     private JLabel getRestartButton() {
-        ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "startButton.png");
-        ImageIcon onStartButtonImage = new ImageIcon("src/resources/images/buttons/onStartButton.png");
+        ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "restart.png");
+        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "restart.png");
         JLabel startButtonLabel = new JLabel(startButtonImage);
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override

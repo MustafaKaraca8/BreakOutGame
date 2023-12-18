@@ -244,14 +244,15 @@ public class GameScreen extends JPanel {
 
                 var pointRight = new Point(ballRight + 1, ballTop + ballHeight / 2);
                 var pointLeft = new Point(ballLeft - 1, ballTop + ballHeight / 2);
-                var pointBottom = new Point(ballLeft + ballWidth / 2, ballTop - 1);
-                var pointTop = new Point(ballLeft + ballWidth / 2, ballBottom + 1);
+                var pointBottom = new Point(ballLeft + ballWidth / 2, ballBottom + 1);
+                var pointTop = new Point(ballLeft + ballWidth / 2, ballTop - 1);
+
+
 
                 if (!bricks[i].isDestroyed()) {
                     bricks[i].setHealth(ball.getDamage());
 
                     if (bricks[i].getRect().contains(pointLeft)) {
-                        System.out.println("Sağına çarptım");
                         if (ball.getXdir() == -1) {
                             ball.setXDir(1);
                         } else if (ball.getXdir() == 1) {
@@ -259,7 +260,6 @@ public class GameScreen extends JPanel {
                         }
 
                     } else if (bricks[i].getRect().contains(pointRight)) {
-                        System.out.println("Soluna çarptım");
                         if (ball.getXdir() == -1) {
                             ball.setXDir(1);
                         } else if (ball.getXdir() == 1) {
@@ -268,14 +268,12 @@ public class GameScreen extends JPanel {
                     }
 
                     if (bricks[i].getRect().contains(pointTop)) {
-                        System.out.println("Üstüne çarptım");
                         if (ball.getYDir() == -1) {
                             ball.setYDir(1);
                         } else if (ball.getYDir() == 1) {
                             ball.setYDir(-1);
                         }
                     } else if (bricks[i].getRect().contains(pointBottom)) {
-                        System.out.println("Altına çarptım");
                         if (ball.getYDir() == -1) {
                             ball.setYDir(1);
                         } else if (ball.getYDir() == 1) {
@@ -283,6 +281,23 @@ public class GameScreen extends JPanel {
                         }
                     }
 
+                    if(bricks[i].getRect().contains(pointRight) && bricks[i].getRect().contains(pointTop)){
+                        System.out.println("sol alt çapraz");
+                        ball.setXDir(-1);
+                        ball.setYDir(+1);
+                    } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointTop)) {
+                        System.out.println("sağ alt çapraz");
+                        ball.setXDir(+1);
+                        ball.setYDir(+1);
+                    } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointBottom)){
+                        System.out.println("sağ üst çapraz");
+                        ball.setXDir(1);
+                        ball.setYDir(-1);
+                    } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointBottom)) {
+                        System.out.println("sol üst çapraz");
+                        ball.setXDir(-1);
+                        ball.setYDir(-1);
+                    }
 
                     if (bricks[i].getHealth() <= 0) {
                         bricks[i].setDestroyed(true);
