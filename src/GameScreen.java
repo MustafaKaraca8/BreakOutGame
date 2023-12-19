@@ -54,9 +54,10 @@ public class GameScreen extends JPanel {
 
         for (int i = 0; i < 5; i++) {
 
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 8; j++) {
 
-                bricks[k] = new Brick(j * 80 + 270, i * 21 + 50);
+                // 80 ve 21
+                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50);
                 k++;
             }
 
@@ -138,10 +139,6 @@ public class GameScreen extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            time++;
-            if (time >= 5) {
-                // Do Brick Change
-            }
             doGameCycle();
         }
     }

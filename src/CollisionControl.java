@@ -184,7 +184,7 @@ public class CollisionControl {
                         System.out.println("sağ üst çapraz");
                         ball.setXDir(1);
                         ball.setYDir(-1);
-                    } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointBottom)) {
+                    } else if (bricks[i].getRect().contains(pointRight) && bricks[i].getRect().contains(pointBottom)) {
                         System.out.println("sol üst çapraz");
                         ball.setXDir(-1);
                         ball.setYDir(-1);

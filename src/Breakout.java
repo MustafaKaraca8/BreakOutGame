@@ -33,6 +33,7 @@ public class Breakout extends JFrame {
         setTitle("Breakout");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         pack();
         setLocationRelativeTo(null);
     }
