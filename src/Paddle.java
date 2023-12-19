@@ -24,7 +24,7 @@ public class Paddle extends Sprite {
     }
 
     private void loadImage() {
-        var ii = new ImageIcon("src/resources/images/bricks/redBrick.png");
+        var ii = new ImageIcon("src/resources/images/paddle.png");
         image = ii.getImage();
     }
 
@@ -44,7 +44,6 @@ public class Paddle extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            image = new ImageIcon("src/resources/images/bricks/brokenRedBrick.png").getImage();
             dx = -1;
             if (canSpinLeft) {
                 timer = new Timer(1, new ActionListener() {
@@ -60,7 +59,6 @@ public class Paddle extends Sprite {
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            image = new ImageIcon("src/resources/images/bricks/brokenRedBrick.png").getImage();
             dx = 1;
             if (canSpinRight) {
                 timer = new Timer(1, new ActionListener() {
@@ -100,7 +98,6 @@ public class Paddle extends Sprite {
             System.out.println(extraShut);
             dy = 0;
         }
-        image = new ImageIcon("src/resources/images/bricks/redBrick.png").getImage();
     }
 
     private void resetState() {
