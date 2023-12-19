@@ -13,5 +13,6 @@ public interface Commons {
     int PERIOD = 10;
     int MAX_HEALTH = 8;
 
+
     String pathOfButton = "src/resources/images/buttons/";
 }

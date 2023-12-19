@@ -46,14 +46,30 @@ public class CollisionControl {
                 else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
+
+
+                if(paddle.getExtraShut()){
+                    System.out.println("Çalıştı");
+                    ball.setXDir(0);
+                    ball.setYDir(-2);
+                }
+
+
             }
 
             if (ballLPos >= first && ballLPos < second) {
+
 
                 if (ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
+
+                if(paddle.getExtraShut()){
+                    System.out.println("Çalıştı");
+                    ball.setXDir(0);
+                    ball.setYDir(-2);
+                }
             }
 
             if (ballLPos >= second && ballLPos < third) {
@@ -62,6 +78,13 @@ public class CollisionControl {
                 else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
+
+                if(paddle.getExtraShut()){
+                    System.out.println("Çalıştı");
+                    ball.setXDir(0);
+                    ball.setYDir(-2);
+                }
+
             }
 
             if (ballLPos >= third && ballLPos < fourth) {
@@ -70,14 +93,30 @@ public class CollisionControl {
                 else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1 * ball.getYDir());
+
+                if(paddle.getExtraShut()){
+                    System.out.println("Çalıştı");
+                    ball.setXDir(0);
+                    ball.setYDir(-2);
+                }
+
+
             }
 
             if (ballLPos > fourth) {
+
 
                 if (ball.getXdir() == -1) ball.setXDir(-1);
                 else if (ball.getXdir() == 1) ball.setXDir(1);
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
+
+                if(paddle.getExtraShut()){
+                    System.out.println("Çalıştı");
+                    ball.setXDir(0);
+                    ball.setYDir(-2);
+                }
+
             }
 
 
