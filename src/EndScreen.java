@@ -19,7 +19,7 @@ public class EndScreen  extends  JPanel{
 
 
         // Oyun İsmi İçin Konum Ayarlaması
-        ImageIcon imageIcon = new ImageIcon("src/resources/images/gameName.png");
+        ImageIcon imageIcon = new ImageIcon("src/resources/images/gameOver.png");
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
 
@@ -102,6 +102,13 @@ public class EndScreen  extends  JPanel{
         if(!inGame){
             parent.cardLayout.show(parent.cardPanel, "end_screen");
         }
-
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Arka plan resmini çiz
+        ImageIcon background = new ImageIcon("src/resources/images/backgroundzort.png");
+        Image backgroundImage = background.getImage();
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
 }
