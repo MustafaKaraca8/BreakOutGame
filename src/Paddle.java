@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 public class Paddle extends Sprite {
 
     private int dx;
+    private int dy;
     private int speed = 5;
 
     public Paddle() {
@@ -28,7 +29,7 @@ public class Paddle extends Sprite {
     void move() {
 
         x += dx * speed;
-
+        y = Commons.INIT_PADDLE_Y +dy;
         if (x <= 0) {
 
             x = 0;
@@ -54,6 +55,10 @@ public class Paddle extends Sprite {
             image = new ImageIcon("src/resources/images/bricks/brokenRedBrick.png").getImage();
             dx = 1;
         }
+
+        if(key == KeyEvent.VK_DOWN){
+            dy = 8;
+        }
     }
 
     // Basılan tuş bırakıldığında
@@ -68,6 +73,10 @@ public class Paddle extends Sprite {
         if (key == KeyEvent.VK_RIGHT) {
             dx = 0;
         }
+
+        if(key == KeyEvent.VK_DOWN){
+            dy = 0;
+        }
         image = new ImageIcon("src/resources/images/bricks/redBrick.png").getImage();
     }
 
@@ -77,7 +86,7 @@ public class Paddle extends Sprite {
         y = Commons.INIT_PADDLE_Y;
     }
 
-    int getDx() {
-        return dx;
+    int getDy() {
+        return dy;
     }
 }

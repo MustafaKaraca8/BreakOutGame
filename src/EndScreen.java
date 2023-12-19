@@ -54,6 +54,7 @@ public class EndScreen  extends  JPanel{
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
+                parent.gameScreen.startTimer();
                 parent.gameScreen.requestFocusInWindow();
             }
 

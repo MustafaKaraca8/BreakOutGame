@@ -59,7 +59,6 @@ public class StartScreen extends JPanel {
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
-                parent.gameScreen.startTimer();
                 parent.gameScreen.requestFocusInWindow();
             }
 
@@ -99,18 +98,6 @@ public class StartScreen extends JPanel {
             }
         });
         return exitButtonLabel;
-    }
-
-    // Yolunu girdiğimiz fonta ulaşılamaz ise Font olarak Arial kullan
-    private Font loadPixelFont() {
-        try {
-            InputStream is = getClass().getResourceAsStream("/resources/fonts/PressStart2P.ttf");
-            return Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-            // Hata durumunda varsayılan fontu kullanabilirsiniz
-            return new Font("Arial", Font.PLAIN, 24);
-        }
     }
 
     @Override

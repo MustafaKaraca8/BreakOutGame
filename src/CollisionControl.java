@@ -79,6 +79,8 @@ public class CollisionControl {
                 else ball.setXDir(generateRandomDir());
                 ball.setYDir(-1);
             }
+
+
         }
     }
 
@@ -160,7 +162,7 @@ public class CollisionControl {
 
     private void checkGameSituation() {
         if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
-            endGame();
+            if(timer != null) endGame();
         }
 
         for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
@@ -176,7 +178,7 @@ public class CollisionControl {
     private void endGame(){
         var parent = (Breakout) SwingUtilities.getWindowAncestor(comp);
         inGame = false;
-        timer.stop();
+        if(timer != null)  timer.stop();
         parent.endScreen.openEndScreen(inGame);
     }
 }
