@@ -32,16 +32,23 @@ public class EndScreen  extends  JPanel{
         gbc.insets = new Insets(0, 0, 0, 0);
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel,gbc);
+
+        imageLabel.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
+
     }
 
     private JLabel getRestartButton() {
         ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "restart.png");
-        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "restart.png");
+        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "onRestart.png");
         JLabel startButtonLabel = new JLabel(startButtonImage);
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+
                 startButtonLabel.setIcon(onStartButtonImage);
+                // Restart butonun üzerine gelince diğer resim öğeleri haraket ediyordu onu düzeltmek için
+                // set preferred size kullanıldı
+                startButtonLabel.setPreferredSize(new Dimension(startButtonImage.getIconWidth(), startButtonImage.getIconHeight() + 10));
             }
 
             @Override
