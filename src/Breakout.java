@@ -39,8 +39,13 @@ public class Breakout extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         pack();
         setLocationRelativeTo(null);
+
+        startGame();
     }
 
+    public void startGame() {
+        startScreen.showStartScreen();
+    }
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {

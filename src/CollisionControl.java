@@ -1,14 +1,17 @@
+import utility.Commons;
+
 import javax.swing.*;
 import java.awt.*;
 
 import static utility.Helper.generateRandomDir;
+import static utility.Helper.level;
 
 public class CollisionControl {
 
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
-    private boolean inGame = true;
+    private boolean inGame ;
     Timer timer;
     Component comp;
 
@@ -201,7 +204,7 @@ public class CollisionControl {
 
     private void checkGameSituation() {
         if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
-            if(timer != null) endGame();
+            if(timer != null ) endGame();
         }
 
         for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
@@ -211,6 +214,8 @@ public class CollisionControl {
 
             if (j == Commons.N_OF_BRICKS) {
                 levelScreen();
+                level +=1;
+                if (level == 5) endGame();
             }
         }
     }

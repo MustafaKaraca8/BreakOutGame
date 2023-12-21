@@ -1,3 +1,5 @@
+import utility.Commons;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -6,7 +8,7 @@ import java.awt.event.MouseEvent;
 public class LevelScreen extends JPanel {
 
     public LevelScreen() {
-
+        System.out.println("Level Screen Çalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -18,7 +20,7 @@ public class LevelScreen extends JPanel {
 
 
         // Oyun İsmi İçin Konum Ayarlaması
-        ImageIcon imageIcon = new ImageIcon("src/resources/images/gameName.png");
+        ImageIcon imageIcon = new ImageIcon("src/resources/images/level2.png");
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
 
@@ -28,12 +30,12 @@ public class LevelScreen extends JPanel {
         JLabel restartButtonLabel = getRestartButton();
         add(restartButtonLabel, gbc);
 
-        imageLabel.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
+
     }
 
     private JLabel getRestartButton() {
-        ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "restart.png");
-        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "onRestart.png");
+        ImageIcon startButtonImage = new ImageIcon(Commons.pathOfButton + "levelStart.png");
+        ImageIcon onStartButtonImage = new ImageIcon(Commons.pathOfButton + "onLevelStart.png");
         JLabel startButtonLabel = new JLabel(startButtonImage);
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
@@ -79,6 +81,6 @@ public class LevelScreen extends JPanel {
         // Arka plan resmini çiz
         ImageIcon background = new ImageIcon("src/resources/images/background.png");
         Image backgroundImage = background.getImage();
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(),this);
-}
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+    }
 }

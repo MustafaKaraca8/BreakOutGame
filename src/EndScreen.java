@@ -1,3 +1,5 @@
+import utility.Commons;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -7,6 +9,7 @@ public class EndScreen  extends  JPanel{
 
 
     EndScreen(){
+        System.out.println("End GameÇalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -110,6 +113,7 @@ public class EndScreen  extends  JPanel{
             parent.cardLayout.show(parent.cardPanel, "end_screen");
         }
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

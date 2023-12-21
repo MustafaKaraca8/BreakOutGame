@@ -1,14 +1,17 @@
+import utility.AudioSingleton;
+import utility.Commons;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.io.InputStream;
+
 
 public class StartScreen extends JPanel {
 
     private final AudioSingleton audioSingleton = AudioSingleton.getInstance();
     public StartScreen() {
+        System.out.println("Staart Screen Çalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -61,6 +64,7 @@ public class StartScreen extends JPanel {
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
+                parent.gameScreen.startTimer();
                 parent.gameScreen.requestFocusInWindow();
 
             }
@@ -101,6 +105,12 @@ public class StartScreen extends JPanel {
             }
         });
         return exitButtonLabel;
+    }
+
+    public void showStartScreen() {
+        var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
+        parent.cardLayout.show(parent.cardPanel, "start_screen");
+        parent.gameScreen.stopGameScreen();
     }
 
     @Override
