@@ -210,7 +210,7 @@ public class CollisionControl {
             }
 
             if (j == Commons.N_OF_BRICKS) {
-                endGame();
+                levelScreen();
             }
         }
     }
@@ -219,5 +219,11 @@ public class CollisionControl {
         inGame = false;
         if(timer != null)  timer.stop();
         parent.endScreen.openEndScreen(inGame);
+    }
+
+    private void levelScreen(){
+        var parent = (Breakout) SwingUtilities.getWindowAncestor(comp);
+        if(timer != null) timer.stop();
+        parent.levelScreen.openLevelScreen();
     }
 }

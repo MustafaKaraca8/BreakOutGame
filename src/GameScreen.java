@@ -1,11 +1,14 @@
 
 
+import utility.Helper;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
 
 public class GameScreen extends JPanel {
 
@@ -52,12 +55,12 @@ public class GameScreen extends JPanel {
 
         int k = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
 
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < 1; j++) {
 
                 // 80 ve 21
-                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50);
+                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50 , 1);
                 k++;
             }
 

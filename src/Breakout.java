@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,6 +9,8 @@ public class Breakout extends JFrame {
     public GameScreen gameScreen;
 
     public EndScreen endScreen;
+
+    public LevelScreen levelScreen;
 
     public Breakout() {
         initUI();
@@ -23,10 +24,12 @@ public class Breakout extends JFrame {
         startScreen = new StartScreen();
         gameScreen = new GameScreen();
         endScreen = new EndScreen();
+        levelScreen = new LevelScreen();
 
         cardPanel.add(startScreen, "start_screen");
         cardPanel.add(gameScreen, "game_screen");
         cardPanel.add(endScreen, "end_screen");
+        cardPanel.add(levelScreen, "level_screen");
 
         add(cardPanel);
 
@@ -46,4 +49,3 @@ public class Breakout extends JFrame {
         });
     }
 }
-

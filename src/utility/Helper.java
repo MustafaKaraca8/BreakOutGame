@@ -19,4 +19,13 @@ public class Helper {
         return random.nextInt(2);
     }
 
+    public static int generateRandomValue(int min, int max) {
+        if (min > max) {
+            throw new IllegalArgumentException("Invalid range");
+        }
+
+        Random random = new Random();
+        return random.nextInt((max - min) + 1) + min;
+    }
+
 }
