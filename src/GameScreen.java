@@ -20,20 +20,20 @@ public class GameScreen extends JPanel {
     private boolean inGame = true;
     private int time = 0;
     private PauseGame pauseGame;
-
-
     CollisionControl collisionControl;
-
+    private final AudioSingleton audioSingleton = AudioSingleton.getInstance();
 
     // End screeni Game screen içerisinde çağıracağımızdan kaynaklı bir referansa ihitiyaç duyuyouruz
     // bu yüzden refarans bir end screen alıyoruz.
     public GameScreen() {
         startGame();
+
     }
 
     public void startGame() {
         inGame = true;
         initBoard();
+        audioSingleton.calAsync("src/resources/audio/game_start.wav");
     }
 
     public void initBoard() {
