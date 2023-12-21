@@ -33,7 +33,7 @@ public class GameScreen extends JPanel {
     public void startGame() {
         inGame = true;
         initBoard();
-        audioSingleton.calAsync("src/resources/audio/game_start.wav");
+
     }
 
     public void initBoard() {
@@ -43,6 +43,7 @@ public class GameScreen extends JPanel {
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
         pauseGame = new PauseGame(GameScreen.this);
         gameInit();
+        audioSingleton.calAsync("src/resources/audio/game_start.wav");
     }
 
     private void gameInit() {
