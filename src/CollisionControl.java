@@ -1,4 +1,3 @@
-import utility.AudioSingleton;
 import utility.Commons;
 
 import javax.swing.*;
@@ -132,7 +131,7 @@ public class CollisionControl {
         for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
-                if(!bricks[i].isDestroyed())  AudioSingleton.getInstance().calAsync("src/resources/audio/carpma-sesi.wav");
+              //  if(!bricks[i].isDestroyed())  //AudioSingleton.getInstance().calAsync("src/resources/audio/carpma-sesi.wav");
 
                 int ballLeft = (int) ball.getRect().getMinX();
                 int ballTop = (int) ball.getRect().getMinY();

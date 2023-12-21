@@ -1,4 +1,3 @@
-import utility.AudioSingleton;
 import utility.Commons;
 
 import javax.swing.*;
@@ -6,10 +5,14 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static utility.Commons.pathOfAudio;
+
 
 public class StartScreen extends JPanel {
 
-    private final AudioSingleton audioSingleton = AudioSingleton.getInstance();
+    // Aşağıda ki gibi iki farklı örnek oluşturmazsak sesler asla durmuyor
+    AudioController backgroundMusic = new AudioController();
+    AudioController buttonSound = new AudioController();
     public StartScreen() {
         System.out.println("Staart Screen Çalıştı");
         setLayout(new GridBagLayout());
@@ -38,7 +41,7 @@ public class StartScreen extends JPanel {
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
-        audioSingleton.calAsync("src/resources/audio/background_music.wav");
+        backgroundMusic.getInstance().calAsync("src/resources/audio/background_music.wav");
     }
 
     // Başlatma butonun fare dinleyicileri ve resim yükleme
@@ -49,7 +52,9 @@ public class StartScreen extends JPanel {
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
+
             }
 
             @Override
@@ -60,13 +65,12 @@ public class StartScreen extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println("Mouse Clicked: Başlatma Butonu");
-                audioSingleton.stop();
+                backgroundMusic.getInstance().stop();
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
                 parent.gameScreen.startTimer();
                 parent.gameScreen.requestFocusInWindow();
-
             }
 
             @Override
@@ -85,6 +89,7 @@ public class StartScreen extends JPanel {
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 

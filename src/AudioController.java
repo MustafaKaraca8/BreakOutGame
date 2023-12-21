@@ -1,23 +1,18 @@
-package utility;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.*;
 
-public class AudioSingleton {
+public class AudioController {
 
-    private static AudioSingleton instance;
+    private AudioController instance;
     private Clip clip;
     private SwingWorker<Void, Void> worker;
-    // Private constructor to prevent instantiation outside the class
-    private AudioSingleton() {
-    }
 
-    public static AudioSingleton getInstance() {
+    public AudioController getInstance() {
         if (instance == null) {
-            instance = new AudioSingleton();
+            instance = new AudioController();
         }
         return instance;
     }
@@ -57,12 +52,16 @@ public class AudioSingleton {
         worker.execute();
     }
     public void stop() {
-        if (clip != null && clip.isRunning()) {
+
+        System.out.println("Stop çalışıp");
+        if (clip != null) {
             clip.stop();
+            System.out.println("Clip null çalışıp");
         }
 
-        if (worker != null && !worker.isDone()) {
+        if (worker != null ) {
             worker.cancel(true);
+            System.out.println("worker  çalışıp");
         }
     }
 }

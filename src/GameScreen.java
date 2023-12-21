@@ -1,4 +1,3 @@
-import utility.AudioSingleton;
 import utility.Commons;
 
 import javax.swing.*;
@@ -22,7 +21,6 @@ public class GameScreen extends JPanel {
     private Level currentLevel;
     private boolean inGame ;
     private PauseGame pauseGame;
-    private final AudioSingleton audioSingleton = AudioSingleton.getInstance();
 
     public GameScreen() {
         System.out.println("Game Screen Çalıştı");

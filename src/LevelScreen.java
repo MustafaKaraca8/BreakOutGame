@@ -79,7 +79,7 @@ public class LevelScreen extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/background.png");
+        ImageIcon background = new ImageIcon("src/resources/images/backgroundzort.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }

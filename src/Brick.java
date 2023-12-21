@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+import static utility.Commons.pathOfBricks;
 import static utility.Helper.*;
 
 public class Brick extends Sprite {
@@ -9,10 +10,10 @@ public class Brick extends Sprite {
     private boolean destroyed;
     private int  mainHealth = 8;
     private int health;
-    private ImageIcon[] blackBrickImages = {new ImageIcon("src/resources/images/bricks/blackBrick.png") , new ImageIcon("src/resources/images/bricks/brokenBlackBrick.png") , new ImageIcon("src/resources/images/bricks/brokenBlackBrick2.png")};
-    private ImageIcon[] redBrickImages = {new ImageIcon("src/resources/images/bricks/redBrick.png") , new ImageIcon("src/resources/images/bricks/brokenRedBrick.png") , new ImageIcon("src/resources/images/bricks/brokenRedBrick2.png")};
-    private ImageIcon[] blueBrickImages = {new ImageIcon("src/resources/images/bricks/blueBrick.png") , new ImageIcon("src/resources/images/bricks/brokenBlueBrick.png") , new ImageIcon("src/resources/images/bricks/brokenBlueBrick2.png")};
-    private ImageIcon[] purpleBrickImages = {new ImageIcon("src/resources/images/bricks/purpleBrick.png") , new ImageIcon("src/resources/images/bricks/brokenPurpleBrick.png") , new ImageIcon("src/resources/images/bricks/brokenPurpleBrick2.png")};
+    private ImageIcon[] blackBrickImages = {new ImageIcon(pathOfBricks + "blackBrick.png") };
+    private ImageIcon[] redBrickImages = {new ImageIcon(pathOfBricks + "redBrick.png") , new ImageIcon(pathOfBricks + "brokenRedBrick.png") };
+    private ImageIcon[] blueBrickImages = {new ImageIcon(pathOfBricks + "blueBrick.png") , new ImageIcon(pathOfBricks + "brokenBlueBrick.png") , new ImageIcon(pathOfBricks + "brokenBlueBrick2.png")};
+    private ImageIcon[] purpleBrickImages = {new ImageIcon(pathOfBricks + "purpleBrick.png") , new ImageIcon( pathOfBricks + "brokenPurpleBrick.png") , new ImageIcon(pathOfBricks + "brokenPurpleBrick2.png")};
     private ImageIcon [] brickImages;
     public Brick(int x, int y, int level) {
         initBrick(x, y , level);

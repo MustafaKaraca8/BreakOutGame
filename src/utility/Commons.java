@@ -13,6 +13,8 @@ public final class Commons {
     public static final int PERIOD = 10;
 
     public static final String pathOfButton = "src/resources/images/buttons/";
+    public static final String pathOfBricks = "src/resources/images/bricks/";
+    public static final String pathOfAudio = "src/resources/audio/";
 
     private Commons() {
         // Bu sınıfın örneğini oluşturmayı engellemek için private bir kurucu metod
