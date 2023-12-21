@@ -7,6 +7,7 @@ import java.io.InputStream;
 
 public class StartScreen extends JPanel {
 
+    private final AudioSingleton audioSingleton = AudioSingleton.getInstance();
     public StartScreen() {
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
@@ -34,7 +35,7 @@ public class StartScreen extends JPanel {
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
-
+        audioSingleton.calAsync("src/resources/audio/background_music.wav");
     }
 
     // Başlatma butonun fare dinleyicileri ve resim yükleme
@@ -56,10 +57,12 @@ public class StartScreen extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println("Mouse Clicked: Başlatma Butonu");
+                audioSingleton.stop();
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
                 parent.gameScreen.requestFocusInWindow();
+
             }
 
             @Override
