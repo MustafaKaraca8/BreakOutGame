@@ -12,8 +12,8 @@ import static utility.Helper.where;
 public class StartScreen extends JPanel {
 
     // Aşağıda ki gibi iki farklı örnek oluşturmazsak sesler asla durmuyor
-    AudioController backgroundMusic = new AudioController();
-    AudioController buttonSound = new AudioController();
+    private AudioController backgroundMusic = new AudioController();
+    private AudioController buttonSound = new AudioController();
     public StartScreen() {
         System.out.println("Staart Screen Çalıştı");
         setLayout(new GridBagLayout());

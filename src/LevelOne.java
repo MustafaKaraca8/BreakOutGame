@@ -40,6 +40,7 @@ public class LevelOne implements Level {
 
         int k = 0;
 
+        // Döngülü ve ya döngüsüz ekran tasarımı yap
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
                 bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);

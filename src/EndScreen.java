@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static utility.Commons.pathOfAudio;
 import static utility.Helper.where;
 
 public class EndScreen  extends  JPanel{
 
-
+    private AudioController buttonSound = new AudioController();
     EndScreen(){
         where = 2;
         System.out.println("End GameÇalıştı");
@@ -50,7 +51,7 @@ public class EndScreen  extends  JPanel{
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
                 // Restart butonun üzerine gelince diğer resim öğeleri haraket ediyordu onu düzeltmek için
                 // set preferred size kullanıldı
@@ -89,6 +90,7 @@ public class EndScreen  extends  JPanel{
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 
