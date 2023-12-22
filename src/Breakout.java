@@ -21,10 +21,11 @@ public class Breakout extends JFrame {
         cardLayout = new CardLayout();
         cardPanel.setLayout(cardLayout);
 
-        gameScreen = new GameScreen();
         startScreen = new StartScreen();
+        gameScreen = new GameScreen();
         endScreen = new EndScreen();
         levelScreen = new LevelScreen();
+
 
         cardPanel.add(startScreen, "start_screen");
         cardPanel.add(gameScreen, "game_screen");

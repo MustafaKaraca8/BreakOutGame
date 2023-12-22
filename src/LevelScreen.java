@@ -7,7 +7,10 @@ import java.awt.event.MouseEvent;
 
 public class LevelScreen extends JPanel {
 
+
     public LevelScreen() {
+
+
         System.out.println("Level Screen Çalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));

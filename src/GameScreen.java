@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import static utility.Helper.level;
+
 
 public class GameScreen extends JPanel {
 
@@ -21,6 +21,9 @@ public class GameScreen extends JPanel {
     private Level currentLevel;
     private boolean inGame ;
     private PauseGame pauseGame;
+    CollisionControl collisionControl;
+
+    AudioController gameBackgroundMusic = new AudioController();
 
     public GameScreen() {
         System.out.println("Game Screen Çalıştı");
@@ -30,6 +33,10 @@ public class GameScreen extends JPanel {
     public void startGame() {
         inGame = true;
         initBoard();
+        /*if(where == 1) gameBackgroundMusic.getInstance().calAsync(pathOfAudio + "gameBackgroundMusic.wav");
+        else {
+            gameBackgroundMusic.getInstance().stop();
+        }*/
     }
 
     public void initBoard() {
@@ -37,10 +44,7 @@ public class GameScreen extends JPanel {
         addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
-
         gameInit();
-
-
     }
 
     private void gameInit() {
@@ -61,6 +65,7 @@ public class GameScreen extends JPanel {
 
     public void startTimer(){
         if(inGame) timer.start();
+
     }
 
     public void stopGameScreen(){
@@ -103,6 +108,7 @@ public class GameScreen extends JPanel {
 
     private void gamePaused(Graphics2D g2d) {
         pauseGame.drawPauseScreen(g2d);
+
     }
 
     private class TAdapter extends KeyAdapter {
@@ -128,7 +134,10 @@ public class GameScreen extends JPanel {
     private void doGameCycle() {
         if (!pauseGame.getIsPaused()) {
             currentLevel.updateGame();
+
         }
         repaint();
     }
+
+
 }

@@ -42,7 +42,7 @@ public class LevelOne implements Level {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 4; j++) {
-                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
+                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
                 k++;
             }
         }

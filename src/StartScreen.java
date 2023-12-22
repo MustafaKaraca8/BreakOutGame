@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static utility.Commons.pathOfAudio;
+import static utility.Helper.where;
 
 
 public class StartScreen extends JPanel {
@@ -54,7 +55,7 @@ public class StartScreen extends JPanel {
             public void mouseEntered(MouseEvent e) {
                 buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
-
+                where = 1;
             }
 
             @Override

@@ -29,4 +29,6 @@ public class Helper {
     }
 
     public static int level = 1;
+
+    public static int where = 0;
 }

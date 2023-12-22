@@ -5,10 +5,13 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static utility.Helper.where;
+
 public class EndScreen  extends  JPanel{
 
 
     EndScreen(){
+        where = 2;
         System.out.println("End GameÇalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
@@ -61,6 +64,8 @@ public class EndScreen  extends  JPanel{
 
             @Override
             public void mouseClicked(MouseEvent e) {
+                where += 1;
+                
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
