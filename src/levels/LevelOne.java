@@ -1,4 +1,10 @@
-/*import utility.Commons;
+package levels;
+
+import collisions.CollisionControl;
+import entites.Ball;
+import entites.Brick;
+import entites.Paddle;
+import utility.Commons;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +12,9 @@ import java.awt.event.KeyEvent;
 
 import static utility.Helper.level;
 
-public class LevelFife implements Level{
+
+public class LevelOne implements Level {
+
     Timer timer ;
     private Ball ball;
     private Paddle paddle;
@@ -15,7 +23,7 @@ public class LevelFife implements Level{
     private boolean inGame = true;
 
     private Component comp ;
-    public LevelFife(Timer timer , Component comp) {
+    public LevelOne(Timer timer , Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
@@ -30,7 +38,7 @@ public class LevelFife implements Level{
 
     @Override
     public void initializeLevel() {
-        bricks = new Brick[Commons.N_OF_BRICKS];
+        bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
         ball = new Ball();
         ball.setDamage(2);
@@ -38,9 +46,11 @@ public class LevelFife implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < 1; j++) {
-                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
+
+        // Döngülü ve ya döngüsüz ekran tasarımı yap
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
                 k++;
             }
         }
@@ -56,7 +66,7 @@ public class LevelFife implements Level{
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), null);
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
                         bricks[i].getY(), bricks[i].getImageWidth(),
@@ -86,7 +96,7 @@ public class LevelFife implements Level{
     @Override
     public boolean isLevelComplete() {
         // Seviye tamamlanma koşulları burada kontrol edilir
+
         return false;
     }
 }
-*/

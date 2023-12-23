@@ -1,3 +1,7 @@
+package screens;
+
+import audio.AudioController;
+import ui.Breakout;
 import utility.Commons;
 
 import javax.swing.*;
@@ -13,7 +17,7 @@ public class LevelScreen extends JPanel {
     public LevelScreen() {
 
 
-        System.out.println("Level Screen Çalıştı");
+        System.out.println("Levels.Level Screen Çalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 

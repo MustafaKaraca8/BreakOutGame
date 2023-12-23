@@ -1,14 +1,17 @@
-import utility.Commons;
+package levels;
 
+import entites.Ball;
+import entites.Brick;
+import entites.Paddle;
+import utility.Commons;
+import collisions.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import static utility.Helper.level;
 
-
-public class LevelOne implements Level {
-
+public class LevelFour implements Level{
     Timer timer ;
     private Ball ball;
     private Paddle paddle;
@@ -17,7 +20,7 @@ public class LevelOne implements Level {
     private boolean inGame = true;
 
     private Component comp ;
-    public LevelOne(Timer timer , Component comp) {
+    public LevelFour(Timer timer , Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
@@ -40,11 +43,9 @@ public class LevelOne implements Level {
 
         int k = 0;
 
-
-        // Döngülü ve ya döngüsüz ekran tasarımı yap
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
-                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
+                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }
         }
@@ -90,7 +91,6 @@ public class LevelOne implements Level {
     @Override
     public boolean isLevelComplete() {
         // Seviye tamamlanma koşulları burada kontrol edilir
-
         return false;
     }
 }

@@ -1,3 +1,8 @@
+package screens;
+
+import audio.AudioController;
+import collisions.CollisionControl;
+import levels.*;
 import utility.Commons;
 
 import javax.swing.*;

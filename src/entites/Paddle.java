@@ -1,3 +1,5 @@
+package entites;
+
 import utility.Commons;
 
 import java.awt.event.ActionEvent;
@@ -30,7 +32,7 @@ public class Paddle extends Sprite {
         image = ii.getImage();
     }
 
-    void move() {
+    public void move() {
         x += dx * speed;
         y = Commons.INIT_PADDLE_Y + dy;
         if (x <= 0) {
@@ -42,7 +44,7 @@ public class Paddle extends Sprite {
     }
 
     // Basıldığında
-    void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
@@ -82,7 +84,7 @@ public class Paddle extends Sprite {
     }
 
     // Basılan tuş bırakıldığında
-    void keyReleased(KeyEvent e) {
+    public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
@@ -148,7 +150,7 @@ public class Paddle extends Sprite {
         timer.start();
     }
 
-    boolean getExtraShut() {
+    public boolean getExtraShut() {
         return extraShut;
     }
 }

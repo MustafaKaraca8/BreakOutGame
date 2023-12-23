@@ -1,4 +1,4 @@
-
+package entites;
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -13,33 +13,33 @@ public class Sprite {
 
 
 
-    int getX() {
+    public int getX() {
 
         return x;
     }
 
 
-    int getY() {
+    public int getY() {
 
         return y;
     }
 
-    int getImageWidth() {
+    public int getImageWidth() {
 
         return imageWidth;
     }
 
-    int getImageHeight() {
+    public int getImageHeight() {
 
         return imageHeight;
     }
 
-    Image getImage() {
+    public Image getImage() {
 
         return image;
     }
 
-    Rectangle getRect() {
+    public Rectangle getRect() {
 
         return new Rectangle(x, y,
                 image.getWidth(null), image.getHeight(null));

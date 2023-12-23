@@ -1,3 +1,10 @@
+package ui;
+
+import screens.EndScreen;
+import screens.GameScreen;
+import screens.LevelScreen;
+import screens.StartScreen;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,7 +41,7 @@ public class Breakout extends JFrame {
 
         add(cardPanel);
 
-        setTitle("Breakout");
+        setTitle("ui.Breakout");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

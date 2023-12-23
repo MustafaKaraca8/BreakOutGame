@@ -1,3 +1,9 @@
+package levels;
+
+import collisions.CollisionControl;
+import entites.Ball;
+import entites.Brick;
+import entites.Paddle;
 import utility.Commons;
 
 import javax.swing.*;

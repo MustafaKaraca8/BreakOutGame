@@ -1,3 +1,9 @@
+package levels;
+
+import collisions.CollisionControl;
+import entites.Ball;
+import entites.Brick;
+import entites.Paddle;
 import utility.Commons;
 
 import javax.swing.*;
@@ -6,16 +12,19 @@ import java.awt.event.KeyEvent;
 
 import static utility.Helper.level;
 
-public class LevelFour implements Level{
-    Timer timer ;
+public class LevelTwo implements Level {
+    Timer timer;
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
     CollisionControl collisionControl;
     private boolean inGame = true;
+    private int radius = 150;
 
-    private Component comp ;
-    public LevelFour(Timer timer , Component comp) {
+
+    private Component comp;
+
+    public LevelTwo(Timer timer, Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
@@ -38,15 +47,18 @@ public class LevelFour implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
+                double angle = 2 * Math.PI * j / 4.0;
+                int x = (int) (Math.cos(angle) * radius) + 550;
+                int y = (int) (Math.sin(angle) * radius) + i * 40 + 200;
+                bricks[k] = new Brick(x, y, level);
                 k++;
             }
         }
         System.out.println(comp);
         System.out.println(timer);
-        collisionControl = new CollisionControl(ball,paddle,bricks,inGame,timer,comp);
+        collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 
     @Override

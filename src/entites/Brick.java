@@ -1,3 +1,5 @@
+package entites;
+
 import javax.swing.*;
 
 import static utility.Commons.pathOfBricks;
@@ -61,19 +63,19 @@ public class Brick extends Sprite {
         }
     }
 
-    boolean isDestroyed() {
+    public boolean isDestroyed() {
         return destroyed;
     }
 
-    void setDestroyed(boolean val) {
+    public void setDestroyed(boolean val) {
         destroyed = val;
     }
 
-    int getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    void setHealth(int damage) {
+    public void setHealth(int damage) {
         health -= damage;
         // 2 veya 4'e eşit veya küçükse bu metot çağırıldığında loadImage çalıştır
         if (health <= 2) {

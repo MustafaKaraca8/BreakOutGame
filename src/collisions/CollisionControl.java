@@ -1,3 +1,10 @@
+package collisions;
+
+import audio.AudioController;
+import entites.Ball;
+import entites.Brick;
+import entites.Paddle;
+import ui.Breakout;
 import utility.Commons;
 
 import javax.swing.*;

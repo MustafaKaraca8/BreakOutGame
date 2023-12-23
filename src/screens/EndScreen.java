@@ -1,3 +1,7 @@
+package screens;
+
+import audio.AudioController;
+import ui.Breakout;
 import utility.Commons;
 
 import javax.swing.*;
@@ -11,7 +15,7 @@ import static utility.Helper.where;
 public class EndScreen  extends  JPanel{
 
     private AudioController buttonSound = new AudioController();
-    EndScreen(){
+    public EndScreen(){
         where = 2;
         System.out.println("End GameÇalıştı");
         setLayout(new GridBagLayout());

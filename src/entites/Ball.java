@@ -1,3 +1,5 @@
+package entites;
+
 import utility.Commons;
 
 import javax.swing.ImageIcon;
@@ -29,7 +31,7 @@ public class Ball extends Sprite {
         image = ii.getImage();
     }
 
-    void move() {
+    public void move() {
         x += xdir * speed;
         y += ydir * speed;
 
@@ -49,29 +51,29 @@ public class Ball extends Sprite {
         y = Commons.INIT_BALL_Y;
     }
 
-    void setXDir(int x) {
+    public void setXDir(int x) {
 
         xdir = x;
     }
 
-    void setYDir(int y) {
+    public void setYDir(int y) {
 
         ydir = y;
     }
 
-    int getYDir() {
+    public int getYDir() {
 
         return ydir;
     }
 
-    int getXdir(){
+    public int getXdir(){
         return xdir;
     }
-    void setDamage(int dmg){
+    public void setDamage(int dmg){
         this.damage = dmg;
     }
 
-    int getDamage(){
+    public int getDamage(){
         return damage;
     }
 
