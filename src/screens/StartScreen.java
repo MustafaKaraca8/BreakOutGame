@@ -43,6 +43,11 @@ public class StartScreen extends JPanel {
 
         gbc.gridy = 2;
         gbc.insets = new Insets(0, 0, 0, 0);
+        JLabel infoButtonLabel = getInfoButton();
+        add(infoButtonLabel, gbc);
+
+        gbc.gridy = 3;
+        gbc.insets = new Insets(0, 0, 0, 0);
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
@@ -117,6 +122,38 @@ public class StartScreen extends JPanel {
         return exitButtonLabel;
     }
 
+    private JLabel getInfoButton(){
+        ImageIcon infoButtonImage = new ImageIcon(Commons.pathOfButton + "controller.png");
+        ImageIcon oninfoButtonImage = new ImageIcon(Commons.pathOfButton + "onController.png");
+        JLabel infoButtonLabel = new JLabel(infoButtonImage);
+        infoButtonLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                infoButtonLabel.setIcon(oninfoButtonImage);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                infoButtonLabel.setIcon(infoButtonImage);
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Mouse Clicked: Başlatma Butonu");
+                backgroundMusic.getInstance().stop();
+                var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
+                parent.cardLayout.show(parent.cardPanel, "info_screen");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                infoButtonLabel.setIcon(infoButtonImage);
+            }
+        });
+        return infoButtonLabel;
+
+    }
     public void showStartScreen() {
         var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
         parent.cardLayout.show(parent.cardPanel, "start_screen");

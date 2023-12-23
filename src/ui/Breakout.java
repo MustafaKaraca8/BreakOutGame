@@ -1,9 +1,6 @@
 package ui;
 
-import screens.EndScreen;
-import screens.GameScreen;
-import screens.LevelScreen;
-import screens.StartScreen;
+import screens.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +16,7 @@ public class Breakout extends JFrame {
 
     public LevelScreen levelScreen;
 
+    public InfoScreen infoScreen;
     public Breakout() {
         initUI();
     }
@@ -32,13 +30,14 @@ public class Breakout extends JFrame {
         gameScreen = new GameScreen();
         endScreen = new EndScreen();
         levelScreen = new LevelScreen();
+        infoScreen = new InfoScreen();
 
 
         cardPanel.add(startScreen, "start_screen");
         cardPanel.add(gameScreen, "game_screen");
         cardPanel.add(endScreen, "end_screen");
         cardPanel.add(levelScreen, "level_screen");
-
+        cardPanel.add(infoScreen , "info_screen");
         add(cardPanel);
 
         setTitle("ui.Breakout");

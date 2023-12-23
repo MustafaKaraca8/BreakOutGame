@@ -17,7 +17,6 @@ import static utility.Helper.level;
 public class GameScreen extends JPanel {
 
     private Timer timer;
-    private int inLevel = 1;
     private LevelOne levelOne;
     private LevelTwo levelTwo;
     private LevelThree levelThree;
@@ -26,9 +25,7 @@ public class GameScreen extends JPanel {
     private Level currentLevel;
     private boolean inGame ;
     private PauseGame pauseGame;
-    CollisionControl collisionControl;
 
-    AudioController gameBackgroundMusic = new AudioController();
 
     public GameScreen() {
         System.out.println("Game Screen Çalıştı");
@@ -38,10 +35,7 @@ public class GameScreen extends JPanel {
     public void startGame() {
         inGame = true;
         initBoard();
-        /*if(where == 1) gameBackgroundMusic.getInstance().calAsync(pathOfAudio + "gameBackgroundMusic.wav");
-        else {
-            gameBackgroundMusic.getInstance().stop();
-        }*/
+
     }
 
     public void initBoard() {
@@ -99,12 +93,7 @@ public class GameScreen extends JPanel {
             } else if (level == 4) {
                 currentLevel = levelFour;
                 currentLevel.drawObjects(g2d);
-            }/*else {
-                currentLevel = levelFife;
-                currentLevel.drawObjects(g2d);
-            }*/
-
-
+            }
         }
 
         gamePaused(g2d);
