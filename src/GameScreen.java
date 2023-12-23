@@ -55,10 +55,10 @@ public class GameScreen extends JPanel {
             startTimer();
         }
 
-        levelOne = new LevelOne(timer,GameScreen.this);
-        levelTwo = new LevelTwo(timer , GameScreen.this);
-        levelThree = new LevelThree(timer , GameScreen.this);
-        levelFour = new LevelFour(timer , GameScreen.this);
+        if(level == 1) levelOne = new LevelOne(timer,GameScreen.this);
+        if(level == 2) levelTwo = new LevelTwo(timer , GameScreen.this);
+        if(level == 3) levelThree = new LevelThree(timer , GameScreen.this);
+        if(level == 4) levelFour = new LevelFour(timer , GameScreen.this);
         pauseGame = new PauseGame(GameScreen.this);
         currentLevel = levelOne;
     }
