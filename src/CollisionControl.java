@@ -130,7 +130,7 @@ public class CollisionControl {
 
     // Topun tuğlayla ilişkisi
     private void checkBrickCollision(){
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
                 if(!bricks[i].isDestroyed()) hittingTheBrick.getInstance().calAsync("src/resources/audio/carpma-sesi.wav");
@@ -212,12 +212,12 @@ public class CollisionControl {
             if(timer != null ) endGame();
         }
 
-        for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0, j = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (bricks[i].isDestroyed()) {
                 j++;
             }
 
-            if (j == Commons.N_OF_BRICKS) {
+            if (j == Commons.N_OF_BRICKS_PER_LEVEL[level]) {
                 levelScreen();
                 level +=1;
                 if (level == 5) endGame();

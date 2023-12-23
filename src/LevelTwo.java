@@ -6,16 +6,19 @@ import java.awt.event.KeyEvent;
 
 import static utility.Helper.level;
 
-public class LevelTwo implements Level{
-    Timer timer ;
+public class LevelTwo implements Level {
+    Timer timer;
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
     CollisionControl collisionControl;
     private boolean inGame = true;
+    private int radius = 150;
 
-    private Component comp ;
-    public LevelTwo(Timer timer , Component comp) {
+
+    private Component comp;
+
+    public LevelTwo(Timer timer, Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
@@ -30,7 +33,7 @@ public class LevelTwo implements Level{
 
     @Override
     public void initializeLevel() {
-        bricks = new Brick[Commons.N_OF_BRICKS];
+        bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
         ball = new Ball();
         ball.setDamage(2);
@@ -38,15 +41,18 @@ public class LevelTwo implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
+                double angle = 2 * Math.PI * j / 4.0;
+                int x = (int) (Math.cos(angle) * radius) + 550;
+                int y = (int) (Math.sin(angle) * radius) + i * 40 + 200;
+                bricks[k] = new Brick(x, y, level);
                 k++;
             }
         }
         System.out.println(comp);
         System.out.println(timer);
-        collisionControl = new CollisionControl(ball,paddle,bricks,inGame,timer,comp);
+        collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class LevelTwo implements Level{
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), null);
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
                         bricks[i].getY(), bricks[i].getImageWidth(),

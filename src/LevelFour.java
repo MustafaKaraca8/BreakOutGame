@@ -30,7 +30,7 @@ public class LevelFour implements Level{
 
     @Override
     public void initializeLevel() {
-        bricks = new Brick[Commons.N_OF_BRICKS];
+        bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
         ball = new Ball();
         ball.setDamage(2);
@@ -38,9 +38,9 @@ public class LevelFour implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
-                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
+                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }
         }
@@ -56,7 +56,7 @@ public class LevelFour implements Level{
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), null);
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
                         bricks[i].getY(), bricks[i].getImageWidth(),

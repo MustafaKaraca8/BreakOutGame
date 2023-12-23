@@ -80,4 +80,7 @@ public class Brick extends Sprite {
             loadImage();
         }else if(health > 2 && health <= 4) loadImage();
     }
+    public void setX(int x){
+        this.x = x;
+    }
 }

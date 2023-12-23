@@ -32,13 +32,14 @@ public class LevelOne implements Level {
 
     @Override
     public void initializeLevel() {
-        bricks = new Brick[Commons.N_OF_BRICKS];
+        bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
         ball = new Ball();
         ball.setDamage(2);
         paddle = new Paddle();
 
         int k = 0;
+
 
         // Döngülü ve ya döngüsüz ekran tasarımı yap
         for (int i = 0; i < 3; i++) {
@@ -59,7 +60,7 @@ public class LevelOne implements Level {
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), null);
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
                         bricks[i].getY(), bricks[i].getImageWidth(),

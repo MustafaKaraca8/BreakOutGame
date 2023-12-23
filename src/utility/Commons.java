@@ -6,7 +6,8 @@ public final class Commons {
     public static final int HEIGHT = 750;
     public static final int BOTTOM_EDGE = 740;
     // BUrayı değiştri amcık samet her levele özel brick sayısı olacak
-    public static final int N_OF_BRICKS = 12;
+    // İlk başa 0 koyma sebebimiz 0. level olmaması
+    public static final int[] N_OF_BRICKS_PER_LEVEL = {0, 12, 16, 14, 20};
     public static final int INIT_PADDLE_X = 600;
     public static final int INIT_PADDLE_Y = 720;
     public static final int INIT_BALL_X = 365;
