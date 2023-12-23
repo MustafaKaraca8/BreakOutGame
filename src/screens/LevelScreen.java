@@ -14,11 +14,8 @@ import static utility.Commons.pathOfAudio;
 public class LevelScreen extends JPanel {
 
     private AudioController buttonSound = new AudioController();
-
+    private final AudioController levelPass = new AudioController();
     public LevelScreen() {
-
-
-        System.out.println("Levels.Level Screen Çalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -80,6 +77,7 @@ public class LevelScreen extends JPanel {
     public void openLevelScreen() {
         // level ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(LevelScreen.this);
+        levelPass.calAsync(pathOfAudio + "levelPass.wav");
         parent.cardLayout.show(parent.cardPanel, "level_screen");
     }
 

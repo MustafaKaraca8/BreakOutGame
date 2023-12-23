@@ -16,8 +16,6 @@ public class InfoScreen extends JPanel {
     private AudioController buttonSound = new AudioController();
 
     public InfoScreen(){
-        where = 2;
-        System.out.println("eÇalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 

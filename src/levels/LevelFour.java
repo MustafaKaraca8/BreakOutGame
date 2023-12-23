@@ -18,8 +18,10 @@ public class LevelFour implements Level{
     private Brick[] bricks;
     CollisionControl collisionControl;
     private boolean inGame = true;
-
     private Component comp ;
+
+    private int brickMovementSpeed = 2; // Adjust the speed as needed
+    private int brickMovementDirection = 1; // 1 for right, -1 for left
     public LevelFour(Timer timer , Component comp) {
         this.comp = comp;
         this.timer = timer;
@@ -49,8 +51,7 @@ public class LevelFour implements Level{
                 k++;
             }
         }
-        System.out.println(comp);
-        System.out.println(timer);
+
         collisionControl = new CollisionControl(ball,paddle,bricks,inGame,timer,comp);
     }
 
@@ -88,9 +89,22 @@ public class LevelFour implements Level{
         // Ekstra güncelleme işlemleri burada yapılabilir
     }
 
-    @Override
-    public boolean isLevelComplete() {
-        // Seviye tamamlanma koşulları burada kontrol edilir
-        return false;
+    private void moveBricks() {
+        for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
+            if (!bricks[i].isDestroyed()) {
+                int currentX = bricks[i].getX();
+                int currentY = bricks[i].getY();
+                int newX = currentX + (brickMovementSpeed * brickMovementDirection);
+                int newY = currentY;
+
+                if (newX < 0 || newX + bricks[i].getImageWidth() > comp.getWidth()) {
+                    brickMovementDirection *= -1;
+                    newY += 300;
+                }
+
+                bricks[i].setX(newX);
+                bricks[i].setY(newY);
+            }
+        }
     }
 }

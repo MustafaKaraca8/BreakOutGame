@@ -79,7 +79,6 @@ public class Paddle extends Sprite {
 
         if (key == KeyEvent.VK_DOWN) {
             dy = 8;
-            System.out.println(extraShut);
         }
     }
 
@@ -99,7 +98,7 @@ public class Paddle extends Sprite {
 
         if (key == KeyEvent.VK_DOWN) {
             ExtraShut();
-            System.out.println(extraShut);
+
             dy = 0;
         }
     }
@@ -113,14 +112,12 @@ public class Paddle extends Sprite {
         timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Timer süresi doldu, şey true oldu!");
                 extraShut = false;
                 ((Timer) e.getSource()).stop();
             }
         });
 
         extraShut = true;
-        System.out.println("true değer çalıştı");
         timer.start();
     }
 

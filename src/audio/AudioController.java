@@ -54,16 +54,12 @@ public class AudioController {
         worker.execute();
     }
     public void stop() {
-
-        System.out.println("Stop çalışıp");
         if (clip != null) {
             clip.stop();
-            System.out.println("Clip null çalışıp");
         }
 
         if (worker != null ) {
             worker.cancel(true);
-            System.out.println("worker  çalışıp");
         }
     }
 }

@@ -50,7 +50,7 @@ public class Brick extends Sprite {
             if(health <= 2)image = brickImages[1].getImage();
             else image = brickImages[0].getImage();
         } else if (mainHealth == 6 || mainHealth == 5) {
-            System.out.println(health);
+
             brickImages = blueBrickImages;
             if(health<=2) image = brickImages[2].getImage();
             else if(health<=4) image = brickImages[1].getImage();
@@ -84,5 +84,8 @@ public class Brick extends Sprite {
     }
     public void setX(int x){
         this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
     }
 }

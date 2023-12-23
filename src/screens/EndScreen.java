@@ -14,10 +14,9 @@ import static utility.Helper.where;
 
 public class EndScreen  extends  JPanel{
 
-    private AudioController buttonSound = new AudioController();
+    private final AudioController loseSound = new AudioController();
+    private final AudioController buttonSound = new AudioController();
     public EndScreen(){
-        where = 2;
-        System.out.println("End GameÇalıştı");
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -26,16 +25,7 @@ public class EndScreen  extends  JPanel{
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 5, 100, 0); // 100 x üst boşluk
-
-
-        // Oyun İsmi İçin Konum Ayarlaması
-        ImageIcon imageIcon = new ImageIcon("src/resources/images/gameOver.png");
-        JLabel imageLabel = new JLabel(imageIcon);
-        add(imageLabel, gbc);
-
-        gbc.gridy = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(350, 0, 0, 0); // 100 x üst boşluk
         JLabel restartButtonLabel = getRestartButton();
         add(restartButtonLabel,gbc);
 
@@ -44,7 +34,6 @@ public class EndScreen  extends  JPanel{
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel,gbc);
 
-        imageLabel.setPreferredSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
 
     }
 
@@ -120,6 +109,7 @@ public class EndScreen  extends  JPanel{
     public void openEndScreen(boolean inGame){
         // Bitiş ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
+        loseSound.getInstance().calAsync(pathOfAudio + "gameOver.wav");
         if(!inGame){
             parent.cardLayout.show(parent.cardPanel, "end_screen");
         }
@@ -129,7 +119,7 @@ public class EndScreen  extends  JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/darkerBackground.png");
+        ImageIcon background = new ImageIcon("src/resources/images/loseScreenBackground.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }

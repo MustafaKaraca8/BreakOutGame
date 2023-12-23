@@ -16,10 +16,10 @@ import static utility.Helper.where;
 public class StartScreen extends JPanel {
 
     // Aşağıda ki gibi iki farklı örnek oluşturmazsak sesler asla durmuyor
-    private AudioController backgroundMusic = new AudioController();
-    private AudioController buttonSound = new AudioController();
+    private final AudioController backgroundMusic = new AudioController();
+    private final AudioController buttonSound = new AudioController();
     public StartScreen() {
-        System.out.println("Staart Screen Çalıştı");
+
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
@@ -74,7 +74,6 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked: Başlatma Butonu");
                 backgroundMusic.getInstance().stop();
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
@@ -140,8 +139,6 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked: Başlatma Butonu");
-                backgroundMusic.getInstance().stop();
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "info_screen");
             }

@@ -18,13 +18,13 @@ public class LevelThree implements Level {
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
-    private int[] brickMovementDirections;
+
     CollisionControl collisionControl;
     private boolean inGame = true;
     private Component comp;
 
-    private int brickMovementSpeed = 2;
-
+    private int brickMovementSpeed = 2; // Adjust the speed as needed
+    private int brickMovementDirection = 1; // 1 for right, -1 for left
 
     public LevelThree(Timer timer, Component comp) {
         this.comp = comp;
@@ -40,7 +40,7 @@ public class LevelThree implements Level {
     @Override
     public void initializeLevel() {
         bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
-        brickMovementDirections = new int[Commons.N_OF_BRICKS_PER_LEVEL[level]];
+
 
         ball = new Ball();
         ball.setDamage(2);
@@ -51,13 +51,10 @@ public class LevelThree implements Level {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 2; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
-                brickMovementDirections[k] = generateRandomDir(); // Assign random initial direction
                 k++;
             }
         }
 
-        System.out.println(comp);
-        System.out.println(timer);
         collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 
@@ -95,33 +92,28 @@ public class LevelThree implements Level {
         moveBricks();
     }
 
-    @Override
-    public boolean isLevelComplete() {
-        // Seviye tamamlanma koşulları burada kontrol edilir
-        return false;
-    }
+
+
 
     private void moveBricks() {
         for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 int currentX = bricks[i].getX();
-                int newX = currentX + (brickMovementSpeed * brickMovementDirections[i]);
+                int currentY = bricks[i].getY();
+                int newX = currentX + (brickMovementSpeed * brickMovementDirection);
+                int newY = currentY;
 
-                // Her bir biriğin kendi özelinde gittikleri yönü alıyor ve belirli kontrollerle değiştirmesini sağlıyor
+                // Check if the new position is within the boundaries
                 if (newX < 0 || newX + bricks[i].getImageWidth() > comp.getWidth()) {
-                    brickMovementDirections[i] *= -1; // Change direction when reaching the boundaries
+                    brickMovementDirection *= -1; // Change direction when reaching the boundaries
+                    newY += 20; // Move the brick down when changing direction
                 }
 
-                // Eğer ki iki brick birbirine değerse yön değiştirmesini sağlıyor
-                for (int j = 0; j < Commons.N_OF_BRICKS_PER_LEVEL[level]; j++) {
-                    if (i != j && !bricks[j].isDestroyed() && bricks[i].getRect().intersects(bricks[j].getRect())) {
-                        brickMovementDirections[i] *= generateRandomDir(); // Change direction on collision
-                        break; // No need to check further collisions for this brick
-                    }
-                }
                 // Update the position
                 bricks[i].setX(newX);
+                bricks[i].setY(newY);
             }
         }
     }
 }
+

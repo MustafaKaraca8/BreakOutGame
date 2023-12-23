@@ -10,5 +10,5 @@ public interface Level {
     void keyPressed(KeyEvent e);
     void keyReleased(KeyEvent e);
     void updateGame();
-    boolean isLevelComplete();
+
 }

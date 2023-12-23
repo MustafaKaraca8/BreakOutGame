@@ -28,7 +28,6 @@ public class GameScreen extends JPanel {
 
 
     public GameScreen() {
-        System.out.println("Game Screen Çalıştı");
         startGame();
     }
 

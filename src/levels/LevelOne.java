@@ -15,15 +15,15 @@ import static utility.Helper.level;
 
 public class LevelOne implements Level {
 
-    Timer timer ;
+    Timer timer;
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
     CollisionControl collisionControl;
     private boolean inGame = true;
+    private Component comp;
 
-    private Component comp ;
-    public LevelOne(Timer timer , Component comp) {
+    public LevelOne(Timer timer, Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
@@ -56,7 +56,7 @@ public class LevelOne implements Level {
         }
         System.out.println(comp);
         System.out.println(timer);
-        collisionControl = new CollisionControl(ball,paddle,bricks,inGame,timer,comp);
+        collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 
     @Override
@@ -90,13 +90,5 @@ public class LevelOne implements Level {
         ball.move();
         paddle.move();
         collisionControl.updateGame();
-        // Ekstra güncelleme işlemleri burada yapılabilir
-    }
-
-    @Override
-    public boolean isLevelComplete() {
-        // Seviye tamamlanma koşulları burada kontrol edilir
-
-        return false;
     }
 }

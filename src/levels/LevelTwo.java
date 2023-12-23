@@ -56,8 +56,7 @@ public class LevelTwo implements Level {
                 k++;
             }
         }
-        System.out.println(comp);
-        System.out.println(timer);
+
         collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 
@@ -95,9 +94,5 @@ public class LevelTwo implements Level {
         // Ekstra güncelleme işlemleri burada yapılabilir
     }
 
-    @Override
-    public boolean isLevelComplete() {
-        // Seviye tamamlanma koşulları burada kontrol edilir
-        return false;
-    }
+
 }

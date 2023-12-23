@@ -61,7 +61,7 @@ public class CollisionControl {
 
 
                 if(paddle.getExtraShut()){
-                    System.out.println("Çalıştı");
+
                     ball.setXDir(0);
                     ball.setYDir(-2);
                 }
@@ -78,7 +78,7 @@ public class CollisionControl {
                 ball.setYDir(-1 * ball.getYDir());
 
                 if(paddle.getExtraShut()){
-                    System.out.println("Çalıştı");
+
                     ball.setXDir(0);
                     ball.setYDir(-2);
                 }
@@ -92,7 +92,7 @@ public class CollisionControl {
                 ball.setYDir(-1);
 
                 if(paddle.getExtraShut()){
-                    System.out.println("Çalıştı");
+
                     ball.setXDir(0);
                     ball.setYDir(-2);
                 }
@@ -107,7 +107,7 @@ public class CollisionControl {
                 ball.setYDir(-1 * ball.getYDir());
 
                 if(paddle.getExtraShut()){
-                    System.out.println("Çalıştı");
+
                     ball.setXDir(0);
                     ball.setYDir(-2);
                 }
@@ -124,7 +124,7 @@ public class CollisionControl {
                 ball.setYDir(-1);
 
                 if(paddle.getExtraShut()){
-                    System.out.println("Çalıştı");
+
                     ball.setXDir(0);
                     ball.setYDir(-2);
                 }
@@ -188,19 +188,18 @@ public class CollisionControl {
                     }
 
                     if (bricks[i].getRect().contains(pointRight) && bricks[i].getRect().contains(pointTop)) {
-                        System.out.println("sol alt çapraz");
+
                         ball.setXDir(-1);
                         ball.setYDir(+1);
                     } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointTop)) {
-                        System.out.println("sağ alt çapraz");
+
                         ball.setXDir(+1);
                         ball.setYDir(+1);
                     } else if (bricks[i].getRect().contains(pointLeft) && bricks[i].getRect().contains(pointBottom)) {
-                        System.out.println("sağ üst çapraz");
                         ball.setXDir(1);
                         ball.setYDir(-1);
                     } else if (bricks[i].getRect().contains(pointRight) && bricks[i].getRect().contains(pointBottom)) {
-                        System.out.println("sol üst çapraz");
+
                         ball.setXDir(-1);
                         ball.setYDir(-1);
                     }
