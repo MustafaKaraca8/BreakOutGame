@@ -8,12 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import static utility.Commons.pathOfAudio;
+
 
 public class LevelScreen extends JPanel {
 
     private AudioController buttonSound = new AudioController();
+
     public LevelScreen() {
 
 
@@ -27,8 +28,6 @@ public class LevelScreen extends JPanel {
         gbc.gridy = 0;
         gbc.insets = new Insets(0, 5, 100, 0); // 100 x üst boşluk
 
-
-        // Oyun İsmi İçin Konum Ayarlaması
         ImageIcon imageIcon = new ImageIcon("src/resources/images/level2.png");
         JLabel imageLabel = new JLabel(imageIcon);
         add(imageLabel, gbc);
@@ -79,7 +78,7 @@ public class LevelScreen extends JPanel {
     }
 
     public void openLevelScreen() {
-        // Bitiş ekranını aç
+        // level ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(LevelScreen.this);
         parent.cardLayout.show(parent.cardPanel, "level_screen");
     }
@@ -88,7 +87,7 @@ public class LevelScreen extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/backgroundzort.png");
+        ImageIcon background = new ImageIcon("src/resources/images/darkerBackground.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }

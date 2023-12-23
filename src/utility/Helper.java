@@ -12,18 +12,10 @@ public class Helper {
         // -1 veya 1 arasında rastgele bir sayı üretme
         return random.nextInt(2) * 2 - 1;
     }
-
-    public static int selectRandomBrickImage(){
-
-        // 0 veya 1 üretir
-        return random.nextInt(2);
-    }
-
     public static int generateRandomValue(int min, int max) {
         if (min > max) {
             throw new IllegalArgumentException("Invalid range");
         }
-
         Random random = new Random();
         return random.nextInt((max - min) + 1) + min;
     }

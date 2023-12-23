@@ -47,8 +47,8 @@ public class LevelTwo implements Level {
 
         int k = 0;
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 1; j++) {
                 double angle = 2 * Math.PI * j / 4.0;
                 int x = (int) (Math.cos(angle) * radius) + 550;
                 int y = (int) (Math.sin(angle) * radius) + i * 40 + 200;

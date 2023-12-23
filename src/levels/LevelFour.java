@@ -43,8 +43,8 @@ public class LevelFour implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 1; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }

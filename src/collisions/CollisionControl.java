@@ -225,8 +225,8 @@ public class CollisionControl {
             }
 
             if (j == Commons.N_OF_BRICKS_PER_LEVEL[level]) {
-                levelScreen();
                 level +=1;
+                levelScreen();
                 if (level == 5) endGame();
             }
         }

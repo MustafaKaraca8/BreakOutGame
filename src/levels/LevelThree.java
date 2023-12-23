@@ -48,8 +48,8 @@ public class LevelThree implements Level {
 
         int k = 0;
 
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 1; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 brickMovementDirections[k] = generateRandomDir(); // Assign random initial direction
                 k++;
