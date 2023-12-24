@@ -17,6 +17,7 @@ public class Breakout extends JFrame {
     public LevelScreen levelScreen;
 
     public InfoScreen infoScreen;
+    public WinScreen  winScreen;
     public Breakout() {
         initUI();
     }
@@ -31,6 +32,7 @@ public class Breakout extends JFrame {
         endScreen = new EndScreen();
         levelScreen = new LevelScreen();
         infoScreen = new InfoScreen();
+        winScreen = new WinScreen();
 
 
         cardPanel.add(startScreen, "start_screen");
@@ -38,9 +40,10 @@ public class Breakout extends JFrame {
         cardPanel.add(endScreen, "end_screen");
         cardPanel.add(levelScreen, "level_screen");
         cardPanel.add(infoScreen , "info_screen");
+        cardPanel.add(winScreen , "win_screen");
         add(cardPanel);
 
-        setTitle("ui.Breakout");
+        setTitle("Breakout");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);

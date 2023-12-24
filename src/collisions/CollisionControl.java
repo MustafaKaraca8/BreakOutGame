@@ -10,6 +10,7 @@ import utility.Commons;
 import javax.swing.*;
 import java.awt.*;
 
+import static utility.Commons.pathOfAudio;
 import static utility.Helper.generateRandomDir;
 import static utility.Helper.level;
 
@@ -22,7 +23,8 @@ public class CollisionControl {
     Timer timer;
     Component comp;
 
-    AudioController hittingTheBrick = new AudioController();
+    private final AudioController hittingTheBrick = new AudioController();
+    private final AudioController hittingThePaddle = new AudioController();
 
     public CollisionControl(Ball ball, Paddle paddle, Brick[] bricks, boolean inGame, Timer timer, Component comp) {
         this.ball = ball;
@@ -42,8 +44,9 @@ public class CollisionControl {
     // Topun tokaçla ilişkisi
     private void checkPaddleCollision() {
 
+        //Paddle ve topun etkileşime girdiği yer
         if ((ball.getRect()).intersects(paddle.getRect())) {
-
+            hittingThePaddle.calAsync(pathOfAudio + "carpma-sesi.wav");
             int paddleLPos = (int) paddle.getRect().getMinX();
             int ballLPos = (int) ball.getRect().getMinX();
 
@@ -218,7 +221,11 @@ public class CollisionControl {
             if(timer != null ) endGame();
         }
 
+
         for (int i = 0, j = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
+            if(bricks[i].getRect().intersects(paddle.getRect())){
+                endGame();
+            }
             if (bricks[i].isDestroyed()) {
                 j++;
             }
@@ -226,7 +233,7 @@ public class CollisionControl {
             if (j == Commons.N_OF_BRICKS_PER_LEVEL[level]) {
                 level +=1;
                 levelScreen();
-                if (level == 5) endGame();
+                if(level == 5) winScreen();
             }
         }
     }
@@ -243,5 +250,12 @@ public class CollisionControl {
         var parent = (Breakout) SwingUtilities.getWindowAncestor(comp);
         if(timer != null) timer.stop();
         parent.levelScreen.openLevelScreen();
+    }
+
+    private void winScreen(){
+        var parent = (Breakout) SwingUtilities.getWindowAncestor(comp);
+        inGame = false;
+        if(timer != null) timer.stop();
+        parent.winScreen.openWinScreen(inGame);
     }
 }

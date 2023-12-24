@@ -46,16 +46,14 @@ public class LevelOne implements Level {
 
         int k = 0;
 
-
         // Döngülü ve ya döngüsüz ekran tasarımı yap
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
-                bricks[k] = new Brick(j * 100 + 450, i * 40 + 50, level);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                int xOffset = i % 2 == 1 ? 50 : 0; // Add an offset every other row
+                bricks[k] = new Brick(j * 100 + 310 + xOffset, i * 40 + 50, level);
                 k++;
             }
         }
-        System.out.println(comp);
-        System.out.println(timer);
         collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
     }
 

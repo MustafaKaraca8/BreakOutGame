@@ -45,8 +45,8 @@ public class LevelFour implements Level{
 
         int k = 0;
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 2; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }
@@ -86,6 +86,7 @@ public class LevelFour implements Level{
         ball.move();
         paddle.move();
         collisionControl.updateGame();
+        moveBricks();
         // Ekstra güncelleme işlemleri burada yapılabilir
     }
 
@@ -97,9 +98,15 @@ public class LevelFour implements Level{
                 int newX = currentX + (brickMovementSpeed * brickMovementDirection);
                 int newY = currentY;
 
+
                 if (newX < 0 || newX + bricks[i].getImageWidth() > comp.getWidth()) {
                     brickMovementDirection *= -1;
-                    newY += 300;
+                    newY += 158;
+                }
+
+                //Eğer ki y de max yüksekliğe gelirse başlangıç konumuna dön
+                if (newY + bricks[i].getImageHeight() > comp.getHeight()) {
+                    newY = 20;
                 }
 
                 bricks[i].setX(newX);
