@@ -41,7 +41,7 @@ public class WinScreen  extends  JPanel{
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 
@@ -67,7 +67,7 @@ public class WinScreen  extends  JPanel{
     public void openWinScreen(boolean inGame){
         // Bitiş ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(WinScreen.this);
-        loseSound.getInstance().calAsync(pathOfAudio + "levelPass.wav");
+        loseSound.calAsync(pathOfAudio + "levelPass.wav");
         if(!inGame){
             parent.cardLayout.show(parent.cardPanel, "win_screen");
         }

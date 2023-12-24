@@ -93,25 +93,17 @@ public class LevelThree implements Level {
     }
 
 
-
-
     private void moveBricks() {
         for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 int currentX = bricks[i].getX();
-                int currentY = bricks[i].getY();
                 int newX = currentX + (brickMovementSpeed * brickMovementDirection);
-                int newY = currentY;
 
-                // Check if the new position is within the boundaries
                 if (newX < 0 || newX + bricks[i].getImageWidth() > comp.getWidth()) {
-                    brickMovementDirection *= -1; // Change direction when reaching the boundaries
-                    newY += 20; // Move the brick down when changing direction
+                    brickMovementDirection *= -1;
                 }
 
-                // Update the position
                 bricks[i].setX(newX);
-                bricks[i].setY(newY);
             }
         }
     }

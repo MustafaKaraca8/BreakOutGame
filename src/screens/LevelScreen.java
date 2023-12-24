@@ -45,7 +45,7 @@ public class LevelScreen extends JPanel {
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
                 // Restart butonun üzerine gelince diğer resim öğeleri haraket ediyordu onu düzeltmek için
                 // set preferred size kullanıldı

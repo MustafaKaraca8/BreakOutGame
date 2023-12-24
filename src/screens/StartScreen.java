@@ -51,7 +51,7 @@ public class StartScreen extends JPanel {
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
-        backgroundMusic.getInstance().calAsync("src/resources/audio/background_music.wav");
+        backgroundMusic.calAsync("src/resources/audio/background_music.wav");
     }
 
     // Başlatma butonun fare dinleyicileri ve resim yükleme
@@ -62,7 +62,7 @@ public class StartScreen extends JPanel {
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
                 where = 1;
             }
@@ -74,7 +74,7 @@ public class StartScreen extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                backgroundMusic.getInstance().stop();
+                backgroundMusic.stop();
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(StartScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();
@@ -98,7 +98,7 @@ public class StartScreen extends JPanel {
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 
@@ -128,7 +128,7 @@ public class StartScreen extends JPanel {
         infoButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 infoButtonLabel.setIcon(oninfoButtonImage);
             }
 

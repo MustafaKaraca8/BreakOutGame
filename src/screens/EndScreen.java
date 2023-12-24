@@ -44,7 +44,7 @@ public class EndScreen  extends  JPanel{
         startButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 startButtonLabel.setIcon(onStartButtonImage);
                 // Restart butonun üzerine gelince diğer resim öğeleri haraket ediyordu onu düzeltmek için
                 // set preferred size kullanıldı
@@ -83,7 +83,7 @@ public class EndScreen  extends  JPanel{
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 
@@ -109,7 +109,7 @@ public class EndScreen  extends  JPanel{
     public void openEndScreen(boolean inGame){
         // Bitiş ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
-        loseSound.getInstance().calAsync(pathOfAudio + "gameOver.wav");
+        loseSound.calAsync(pathOfAudio + "gameOver.wav");
         if(!inGame){
             parent.cardLayout.show(parent.cardPanel, "end_screen");
         }

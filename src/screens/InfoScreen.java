@@ -38,7 +38,7 @@ public class InfoScreen extends JPanel {
         exitButtonLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                buttonSound.getInstance().calAsync(pathOfAudio + "onButton.wav");
+                buttonSound.calAsync(pathOfAudio + "onButton.wav");
                 exitButtonLabel.setIcon(onExitButtonImage);
             }
 

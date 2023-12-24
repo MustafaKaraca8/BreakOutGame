@@ -20,8 +20,8 @@ public class LevelFour implements Level{
     private boolean inGame = true;
     private Component comp ;
 
-    private int brickMovementSpeed = 2; // Adjust the speed as needed
-    private int brickMovementDirection = 1; // 1 for right, -1 for left
+    private int brickMovementSpeed = 3;
+    private int brickMovementDirection = 1;
     public LevelFour(Timer timer , Component comp) {
         this.comp = comp;
         this.timer = timer;

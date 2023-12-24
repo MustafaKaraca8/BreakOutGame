@@ -20,8 +20,6 @@ public class LevelTwo implements Level {
     CollisionControl collisionControl;
     private boolean inGame = true;
     private int radius = 150;
-
-
     private Component comp;
 
     public LevelTwo(Timer timer, Component comp) {

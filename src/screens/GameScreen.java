@@ -131,6 +131,4 @@ public class GameScreen extends JPanel {
         }
         repaint();
     }
-
-
 }
