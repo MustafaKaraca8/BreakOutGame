@@ -23,15 +23,7 @@ public class LevelScreen extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(0, 5, 100, 0); // 100 x üst boşluk
-
-        ImageIcon imageIcon = new ImageIcon("src/resources/images/level2.png");
-        JLabel imageLabel = new JLabel(imageIcon);
-        add(imageLabel, gbc);
-
-
-        gbc.gridy = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
+        gbc.insets = new Insets(350, 0, 0, 0);
         JLabel restartButtonLabel = getRestartButton();
         add(restartButtonLabel, gbc);
 
@@ -85,7 +77,7 @@ public class LevelScreen extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
-        ImageIcon background = new ImageIcon("src/resources/images/darkerBackground.png");
+        ImageIcon background = new ImageIcon("src/resources/images/newLevel.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
