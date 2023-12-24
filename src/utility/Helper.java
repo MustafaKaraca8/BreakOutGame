@@ -20,7 +20,7 @@ public class Helper {
         return random.nextInt((max - min) + 1) + min;
     }
 
-    public static int level = 4;
+    public static int level = 1;
 
     public static int where = 0;
 }
