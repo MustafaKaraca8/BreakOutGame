@@ -46,7 +46,7 @@ public class CollisionControl {
 
         //Paddle ve topun etkileşime girdiği yer
         if ((ball.getRect()).intersects(paddle.getRect())) {
-            hittingThePaddle.calAsync(pathOfAudio + "carpma-sesi.wav");
+            hittingThePaddle.calAsync(pathOfAudio + "hittingSound.wav");
             int paddleLPos = (int) paddle.getRect().getMinX();
             int ballLPos = (int) ball.getRect().getMinX();
 
@@ -143,7 +143,7 @@ public class CollisionControl {
         for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if ((ball.getRect()).intersects(bricks[i].getRect())) {
 
-                if(!bricks[i].isDestroyed()) hittingTheBrick.calAsync(pathOfAudio + "carpma-sesi.wav");
+                if(!bricks[i].isDestroyed()) hittingTheBrick.calAsync(pathOfAudio + "hittingSound.wav");
 
                 int ballLeft = (int) ball.getRect().getMinX();
                 int ballTop = (int) ball.getRect().getMinY();
