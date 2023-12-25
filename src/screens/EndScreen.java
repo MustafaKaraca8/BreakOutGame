@@ -10,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static utility.Commons.pathOfAudio;
-import static utility.Helper.where;
+
 
 public class EndScreen  extends  JPanel{
 
@@ -58,8 +58,6 @@ public class EndScreen  extends  JPanel{
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                where += 1;
-                
                 var parent = (Breakout) SwingUtilities.getWindowAncestor(EndScreen.this);
                 parent.cardLayout.show(parent.cardPanel, "game_screen");
                 parent.gameScreen.startGame();

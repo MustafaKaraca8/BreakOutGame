@@ -77,7 +77,7 @@ public class Ball extends Sprite {
         return damage;
     }
 
-    void setSpeed(int speed){
+    public void setSpeed(int speed){
         this.speed = speed;
     }
 

@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static utility.Commons.pathOfAudio;
-import static utility.Helper.where;
+
 
 public class InfoScreen extends JPanel {
 
