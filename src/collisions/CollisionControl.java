@@ -117,6 +117,11 @@ public class CollisionControl {
                         handleCollision = true;
                     }
 
+                    if(bricks[i].getRect().contains(pointBottom) && ball.getXdir() == 0){
+                        if(paddle.getExtraShut()) ball.setDamage(2 * level);
+                        ball.setXDir(generateRandomDir());
+                        handleCollision = true;
+                    }
                     //System.out.println("Collision at " + i + ": " + handleCollision);
 
                     if (handleCollision) {
