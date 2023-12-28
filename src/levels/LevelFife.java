@@ -1,36 +1,34 @@
 package levels;
 
-import collisions.CollisionControl;
 import entites.Ball;
 import entites.Brick;
 import entites.Paddle;
 import utility.Commons;
-
+import collisions.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-import static utility.Helper.generateRandomDir;
 import static utility.Helper.level;
 
-public class LevelThree implements Level {
-    Timer timer;
+public class LevelFife implements Level{
+    Timer timer ;
     private Ball ball;
     private Paddle paddle;
     private Brick[] bricks;
-
     CollisionControl collisionControl;
     private boolean inGame = true;
-    private Component comp;
-
-    private int brickMovementSpeed = 2;
+    private Component comp ;
+    private int brickMovementSpeedX = 3;
+    private int brickMovementSpeedY = 5;
     private int brickMovementDirection = 1;
-
-    public LevelThree(Timer timer, Component comp) {
+    public LevelFife(Timer timer , Component comp) {
         this.comp = comp;
         this.timer = timer;
         startLevel();
+
     }
+
 
     @Override
     public void startLevel() {
@@ -41,21 +39,21 @@ public class LevelThree implements Level {
     public void initializeLevel() {
         bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
-
         ball = new Ball();
         ball.setDamage(2);
+        ball.setSpeed(7);
         paddle = new Paddle();
 
         int k = 0;
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 2; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }
         }
 
-        collisionControl = new CollisionControl(ball, paddle, bricks, inGame, timer, comp);
+        collisionControl = new CollisionControl(ball,paddle,bricks,inGame,timer,comp);
     }
 
     @Override
@@ -90,22 +88,38 @@ public class LevelThree implements Level {
         paddle.move();
         collisionControl.updateGame();
         moveBricks();
+        // Ekstra güncelleme işlemleri burada yapılabilir
     }
-
 
     private void moveBricks() {
         for (int i = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
             if (!bricks[i].isDestroyed()) {
                 int currentX = bricks[i].getX();
-                int newX = currentX + (brickMovementSpeed * brickMovementDirection);
+                int currentY = bricks[i].getY();
+                int newX = currentX + (brickMovementSpeedX * brickMovementDirection);
+                int newY = currentY;
 
                 if (newX < 0 || newX + bricks[i].getImageWidth() > comp.getWidth()) {
                     brickMovementDirection *= -1;
+                    newY += 158;
+                }
+
+                // Eğer ki y de max yüksekliğe gelirse başlangıç konumuna dön
+                if (newY + bricks[i].getImageHeight() > comp.getHeight()) {
+                    newY = 20;
+                }
+
+                // Canı iki altına düşen brick aşşağı düşsün en alt sınıra değince yok olsun
+                if (bricks[i].getHealth() <= 2) {
+                    newY += brickMovementSpeedY;
+                    if (newY + bricks[i].getImageHeight() > comp.getHeight()) {
+                        bricks[i].setDestroyed(true);
+                    }
                 }
 
                 bricks[i].setX(newX);
+                bricks[i].setY(newY);
             }
         }
     }
 }
-

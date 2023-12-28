@@ -27,7 +27,6 @@ public class LevelOne implements Level {
         this.comp = comp;
         this.timer = timer;
         startLevel();
-
     }
 
 
@@ -49,7 +48,7 @@ public class LevelOne implements Level {
         // Döngülü ve ya döngüsüz ekran tasarımı yap
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j <4; j++) {
-                int xOffset = i % 2 == 1 ? 50 : 0; // Add an offset every other row
+                int xOffset = i % 2 == 1 ? 50 : 0;
                 bricks[k] = new Brick(j * 100 + 310 + xOffset, i * 40 + 50, level);
                 k++;
             }

@@ -20,7 +20,7 @@ public class LevelFour implements Level{
     private boolean inGame = true;
     private Component comp ;
 
-    private int brickMovementSpeed = 4;
+    private int brickMovementSpeed = 3;
     private int brickMovementDirection = 1;
     public LevelFour(Timer timer , Component comp) {
         this.comp = comp;
@@ -104,7 +104,6 @@ public class LevelFour implements Level{
                     brickMovementDirection *= -1;
                     newY += 158;
                 }
-
                 //Eğer ki y de max yüksekliğe gelirse başlangıç konumuna dön
                 if (newY + bricks[i].getImageHeight() > comp.getHeight()) {
                     newY = 20;

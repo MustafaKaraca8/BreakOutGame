@@ -21,7 +21,7 @@ public class GameScreen extends JPanel {
     private LevelTwo levelTwo;
     private LevelThree levelThree;
     private LevelFour levelFour;
-    //private LevelFife levelFife;
+    private LevelFife levelFife;
     private Level currentLevel;
     private boolean inGame ;
     private PauseGame pauseGame;
@@ -57,6 +57,7 @@ public class GameScreen extends JPanel {
         if(level == 2) levelTwo = new LevelTwo(timer , GameScreen.this);
         if(level == 3) levelThree = new LevelThree(timer , GameScreen.this);
         if(level == 4) levelFour = new LevelFour(timer , GameScreen.this);
+        if(level == 5) levelFife = new LevelFife(timer , GameScreen.this);
         pauseGame = new PauseGame(GameScreen.this);
         currentLevel = levelOne;
     }
@@ -91,6 +92,9 @@ public class GameScreen extends JPanel {
                 currentLevel.drawObjects(g2d);
             } else if (level == 4) {
                 currentLevel = levelFour;
+                currentLevel.drawObjects(g2d);
+            }else if (level == 5){
+                currentLevel = levelFife;
                 currentLevel.drawObjects(g2d);
             }
         }
