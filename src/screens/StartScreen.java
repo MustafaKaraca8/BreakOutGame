@@ -51,7 +51,7 @@ public class StartScreen extends JPanel {
         JLabel exitButtonLabel = getExitButton();
         add(exitButtonLabel, gbc);
 
-        backgroundMusic.calAsync("src/resources/audio/backgroundMusic.wav");
+        backgroundMusic.calAsync(pathOfAudio + "startScreenBackgroundMusic.wav");
     }
 
     // Başlatma butonun fare dinleyicileri ve resim yükleme

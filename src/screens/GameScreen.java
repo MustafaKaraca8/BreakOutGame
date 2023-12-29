@@ -1,7 +1,4 @@
 package screens;
-
-import audio.AudioController;
-import collisions.CollisionControl;
 import levels.*;
 import utility.Commons;
 
@@ -27,6 +24,7 @@ public class GameScreen extends JPanel {
     private PauseGame pauseGame;
 
 
+
     public GameScreen() {
         startGame();
     }
@@ -38,7 +36,7 @@ public class GameScreen extends JPanel {
     }
 
     public void initBoard() {
-        setBackground(new Color(217, 117, 117));
+        setBackground(new Color(40, 40, 40));
         addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
@@ -54,10 +52,10 @@ public class GameScreen extends JPanel {
         }
 
         if(level == 1) levelOne = new LevelOne(timer,GameScreen.this);
-        if(level == 2) levelTwo = new LevelTwo(timer , GameScreen.this);
-        if(level == 3) levelThree = new LevelThree(timer , GameScreen.this);
-        if(level == 4) levelFour = new LevelFour(timer , GameScreen.this);
-        if(level == 5) levelFife = new LevelFife(timer , GameScreen.this);
+        else if(level == 2) levelTwo = new LevelTwo(timer , GameScreen.this);
+        else if(level == 3) levelThree = new LevelThree(timer , GameScreen.this);
+        else if(level == 4) levelFour = new LevelFour(timer , GameScreen.this);
+        else if(level == 5) levelFife = new LevelFife(timer , GameScreen.this);
         pauseGame = new PauseGame(GameScreen.this);
         currentLevel = levelOne;
     }
@@ -75,12 +73,15 @@ public class GameScreen extends JPanel {
         super.paintComponent(g);
 
         var g2d = (Graphics2D) g;
-
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
 
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
+
+        ImageIcon background = new ImageIcon("src/resources/images/gameBackground.png");
+        Image backgroundImage = background.getImage();
+        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
 
         if (inGame) {
             if(level == 1) currentLevel.drawObjects(g2d);
@@ -135,4 +136,6 @@ public class GameScreen extends JPanel {
         }
         repaint();
     }
+
 }
+

@@ -22,7 +22,7 @@ public class CollisionControl {
     private boolean inGame;
     Timer timer;
     Component comp;
-
+    private boolean alreadyHitPaddle = false;
     private final AudioController hittingTheBrick = new AudioController();
     private final AudioController hittingThePaddle = new AudioController();
 
@@ -42,10 +42,15 @@ public class CollisionControl {
     }
 
     // Topun tokaçla ilişkisi
+
+
     private void checkPaddleCollision() {
-        if ((ball.getRect()).intersects(paddle.getRect())) {
+        if (!alreadyHitPaddle && (ball.getRect()).intersects(paddle.getRect())) {
             hittingThePaddle.calAsync(Commons.pathOfAudio + "hittingSound.wav");
             handleBallCollision();
+            alreadyHitPaddle = true;
+        } else {
+            alreadyHitPaddle = false;
         }
     }
 
@@ -60,6 +65,8 @@ public class CollisionControl {
             ball.setXDir(0);
             ball.setYDir(-2);
         }
+
+        alreadyHitPaddle = false; // Çarpma durumu işlendi, bayrağı sıfırla
     }
 
     private int determineNewDirectionX() {
@@ -118,7 +125,7 @@ public class CollisionControl {
                     }
 
                     if(bricks[i].getRect().contains(pointBottom) && ball.getXdir() == 0){
-                        if(paddle.getExtraShut()) ball.setDamage(2 * level);
+                        if(paddle.getExtraShut()) ball.setDamage(level);
                         ball.setXDir(generateRandomDir());
                         handleCollision = true;
                     }
@@ -155,9 +162,11 @@ public class CollisionControl {
         if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
             if (timer != null) endGame();
         }
-
+        if (level == 6) winScreen();
         for (int i = 0, j = 0; i < Commons.N_OF_BRICKS_PER_LEVEL[level]; i++) {
-            if (bricks[i].getRect().intersects(paddle.getRect())) {
+            // Eğer ki tuğla tokaça değerse ve tuğla yok edilmemişse yanarsın
+
+            if (bricks[i].getRect().intersects(paddle.getRect()) && !bricks[i].isDestroyed()) {
                 endGame();
             }
             if (bricks[i].isDestroyed()) {
@@ -166,8 +175,8 @@ public class CollisionControl {
 
             if (j == Commons.N_OF_BRICKS_PER_LEVEL[level]) {
                 level += 1;
-                levelScreen();
                 if (level == 6) winScreen();
+                else levelScreen();
             }
         }
     }
@@ -181,6 +190,7 @@ public class CollisionControl {
     }
 
     private void levelScreen() {
+        System.out.println("Level çalıştı: " + level);
         var parent = (Breakout) SwingUtilities.getWindowAncestor(comp);
         if (timer != null) timer.stop();
         parent.levelScreen.openLevelScreen();

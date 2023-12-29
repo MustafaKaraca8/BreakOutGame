@@ -10,12 +10,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static utility.Commons.pathOfAudio;
-import static utility.Helper.level;
 
 
 public class WinScreen  extends  JPanel{
 
-    private final AudioController loseSound = new AudioController();
+    private final AudioController winScreen = new AudioController();
     private final AudioController buttonSound = new AudioController();
     public WinScreen(){
         setLayout(new GridBagLayout());
@@ -67,7 +66,7 @@ public class WinScreen  extends  JPanel{
     public void openWinScreen(boolean inGame){
         // Bitiş ekranını aç
         var parent = (Breakout) SwingUtilities.getWindowAncestor(WinScreen.this);
-        loseSound.calAsync(pathOfAudio + "levelPass.wav");
+        winScreen.calAsync(pathOfAudio + "winScreenMusic.wav");
         if(!inGame){
             parent.cardLayout.show(parent.cardPanel, "win_screen");
         }
