@@ -41,13 +41,13 @@ public class LevelFour implements Level{
 
         ball = new Ball();
         ball.setDamage(2);
-        ball.setSpeed(7);
+        ball.setSpeed(8);
         paddle = new Paddle();
 
         int k = 0;
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 2; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }

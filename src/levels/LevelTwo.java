@@ -41,6 +41,7 @@ public class LevelTwo implements Level {
 
         ball = new Ball();
         ball.setDamage(2);
+        ball.setSpeed(5);
         paddle = new Paddle();
 
         int k = 0;

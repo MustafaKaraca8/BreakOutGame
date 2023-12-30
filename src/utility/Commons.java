@@ -7,7 +7,7 @@ public final class Commons {
     public static final int BOTTOM_EDGE = 760;
     // BUrayı değiştri amcık samet her levele özel brick sayısı olacak
     // İlk başa 0 koyma sebebimiz 0. level olmaması
-    public static final int[] N_OF_BRICKS_PER_LEVEL = {0, 20, 20, 12, 8 , 1, 0};
+    public static final int[] N_OF_BRICKS_PER_LEVEL = {0, 60, 20, 20, 12 , 9, 0};
     public static final int INIT_PADDLE_X = 600;
     public static final int INIT_PADDLE_Y = 720;
     public static final int INIT_BALL_X = 600;
@@ -18,7 +18,5 @@ public final class Commons {
     public static final String pathOfBricks = "src/resources/images/bricks/";
     public static final String pathOfAudio = "src/resources/audio/";
 
-    private Commons() {
-        // Bu sınıfın örneğini oluşturmayı engellemek için private bir kurucu metod
-    }
+
 }

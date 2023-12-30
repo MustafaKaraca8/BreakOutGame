@@ -44,13 +44,14 @@ public class LevelThree implements Level {
 
         ball = new Ball();
         ball.setDamage(2);
+        ball.setSpeed(6);
         paddle = new Paddle();
 
         int k = 0;
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 2; j++) {
-                bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 5; j++) {
+                bricks[k] = new Brick(j * 100 + 110, i * 40 + 50, level);
                 k++;
             }
         }

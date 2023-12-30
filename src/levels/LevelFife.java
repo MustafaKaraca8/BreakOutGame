@@ -19,8 +19,8 @@ public class LevelFife implements Level{
     CollisionControl collisionControl;
     private boolean inGame = true;
     private Component comp ;
-    private int brickMovementSpeedX = 3;
-    private int brickMovementSpeedY = 5;
+    private int brickMovementSpeedX = 5;
+    private int brickMovementSpeedY = 4;
     private int brickMovementDirection = 1;
     public LevelFife(Timer timer , Component comp) {
         this.comp = comp;
@@ -40,14 +40,14 @@ public class LevelFife implements Level{
         bricks = new Brick[Commons.N_OF_BRICKS_PER_LEVEL[level]];
 
         ball = new Ball();
-        ball.setDamage(2);
-        ball.setSpeed(7);
+        ball.setDamage(20);
+        ball.setSpeed(8);
         paddle = new Paddle();
 
         int k = 0;
 
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < 1; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 bricks[k] = new Brick(j * 100 + 270, i * 40 + 50, level);
                 k++;
             }
