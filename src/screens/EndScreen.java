@@ -124,7 +124,7 @@ public class EndScreen  extends  JPanel{
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
 
-        ImageIcon background = new ImageIcon("src/resources/images/loseScreenBackground.png");
+        ImageIcon background = new ImageIcon("src/resources/images/loseImage.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }

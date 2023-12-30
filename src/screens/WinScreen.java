@@ -19,8 +19,8 @@ public class WinScreen extends JPanel {
     private ImageIcon currentBackground;
     private int currentBackgroundIndex = 0;
     private ImageIcon[] backgrounds = {
-            new ImageIcon("src/resources/images/winningScreenBackground.png"),
-            new ImageIcon("src/resources/images/breakoutGame.png"),
+            new ImageIcon("src/resources/images/winScreenBG.png"),
+            new ImageIcon("src/resources/images/endGameImage.png"),
             // Diğer görselleri buraya ekleyebilirsiniz
     };
 
@@ -39,8 +39,8 @@ public class WinScreen extends JPanel {
 
     // Timer'ı başlatan metod
     public void startTimer() {
-        // Timer oluştur ve her 10 saniyede bir actionPerformed metodu çağrılsın
-        timer = new Timer(15200, new ActionListener() {
+        // Timer oluştur ve her 14.9 sonra içersinde ki olay gerçekleşecek
+        timer = new Timer(15000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // İndexi bir arttırır

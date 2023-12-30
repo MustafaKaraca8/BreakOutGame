@@ -84,7 +84,7 @@ public class LevelScreen extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
 
-        ImageIcon background = new ImageIcon("src/resources/images/newLevel.png");
+        ImageIcon background = new ImageIcon("src/resources/images/levelUpBG.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
