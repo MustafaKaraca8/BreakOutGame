@@ -18,40 +18,47 @@ public class Breakout extends JFrame {
 
     public InfoScreen infoScreen;
     public WinScreen  winScreen;
-    public Breakout() {
-        initUI();
-    }
+        // Diğer değişkenleri burada bırakın
 
-    private void initUI() {
-        cardPanel = new JPanel();
-        cardLayout = new CardLayout();
-        cardPanel.setLayout(cardLayout);
+        public Breakout() {
+            initUI();
+        }
 
-        startScreen = new StartScreen();
-        gameScreen = new GameScreen();
-        endScreen = new EndScreen();
-        levelScreen = new LevelScreen();
-        infoScreen = new InfoScreen();
-        winScreen = new WinScreen();
+        private void initUI() {
+            cardPanel = new JPanel();
+            cardLayout = new CardLayout();
+            cardPanel.setLayout(cardLayout);
 
+            // Ekranları oluşturup panele eklemeyin
+            startScreen = new StartScreen();
+            gameScreen = new GameScreen();
+            endScreen = new EndScreen();
+            levelScreen = new LevelScreen();
+            infoScreen = new InfoScreen();
+            winScreen = new WinScreen();
 
-        cardPanel.add(startScreen, "start_screen");
-        cardPanel.add(gameScreen, "game_screen");
-        cardPanel.add(endScreen, "end_screen");
-        cardPanel.add(levelScreen, "level_screen");
-        cardPanel.add(infoScreen , "info_screen");
-        cardPanel.add(winScreen , "win_screen");
-        add(cardPanel);
+            addScreensToCardPanel();
 
-        setTitle("Breakout");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(false);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        pack();
-        setLocationRelativeTo(null);
+            add(cardPanel);
 
-        startGame();
-    }
+            setTitle("Breakout");
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setResizable(false);
+            setExtendedState(JFrame.MAXIMIZED_BOTH);
+            pack();
+            setLocationRelativeTo(null);
+
+            startGame();
+        }
+
+        private void addScreensToCardPanel() {
+            cardPanel.add(startScreen, "start_screen");
+            cardPanel.add(gameScreen, "game_screen");
+            cardPanel.add(endScreen, "end_screen");
+            cardPanel.add(levelScreen, "level_screen");
+            cardPanel.add(infoScreen , "info_screen");
+            cardPanel.add(winScreen , "win_screen");
+        }
 
     public void startGame() {
         startScreen.showStartScreen();

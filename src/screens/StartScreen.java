@@ -159,6 +159,13 @@ public class StartScreen extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        var g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_QUALITY);
+
         // Arka plan resmini çiz
         ImageIcon background = new ImageIcon("src/resources/images/background.png");
         Image backgroundImage = background.getImage();

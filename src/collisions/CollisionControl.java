@@ -238,5 +238,6 @@ public class CollisionControl {
         inGame = false;
         if (timer != null) timer.stop();
         parent.winScreen.openWinScreen(inGame);
+        parent.winScreen.startTimer();
     }
 }

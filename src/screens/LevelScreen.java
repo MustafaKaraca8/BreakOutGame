@@ -77,6 +77,13 @@ public class LevelScreen extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         // Arka plan resmini çiz
+        var g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
+                RenderingHints.VALUE_RENDER_QUALITY);
+
         ImageIcon background = new ImageIcon("src/resources/images/newLevel.png");
         Image backgroundImage = background.getImage();
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
